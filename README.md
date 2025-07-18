@@ -1,10 +1,6 @@
-# Project Name
+# Dragonwing IoT Sample Apps
 
-*\<update with your project name and a short description\>*
-
-*\<search this repo for "REPLACE-ME" and update all instances accordingly\>*
-
-Project that does ... implemented in ... runs on Qualcomm® *\<processor\>*
+This repository contains sample applications for the Qualcomm® Dragonwing IoT platform.
 
 ## Branches
 
@@ -32,10 +28,7 @@ How to contact maintainers. E.g. GitHub Issues, GitHub Discussions could be indi
 
 * [Report an Issue on GitHub](../../issues)
 * [Open a Discussion on GitHub](../../discussions)
-* [E-mail us](mailto:REPLACE-ME@qti.qualcomm.com) for general questions
 
 ## License
 
-*\<update with your project name and license\>*
-
-*\<REPLACE-ME\>* is licensed under the [BSD-3-clause License](https://spdx.org/licenses/BSD-3-Clause.html). See [LICENSE.txt](LICENSE.txt) for the full license text.
+dragonwing-iot-samples is licensed under the [BSD-3-clause License](https://spdx.org/licenses/BSD-3-Clause.html). See [LICENSE.txt](LICENSE.txt) for the full license text.
