@@ -80,10 +80,3 @@ Output
 - Modify the `runInference()` function to support additional output tensors or model types.
 
 ---
-
-## 🧹 To Do
-
-- Add error dialogs for missing files or invalid images
-- Improve exception handling and logging
-
----
