@@ -1,3 +1,10 @@
+# -----------------------------------------------------------------------------
+#
+# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+# SPDX-License-Identifier: BSD-3-Clause
+#
+# -----------------------------------------------------------------------------
+
 import cv2
 import gi
 import numpy as np
@@ -471,4 +478,5 @@ if __name__ == "__main__":
     if not success:
         print("GTK could not be initialized. Check environmental variables")
         exit(1)
+
     main() 
