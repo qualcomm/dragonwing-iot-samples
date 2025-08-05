@@ -1,16 +1,19 @@
-# 🧠 RB3 Gen 2 Image Classification
+# 🧠 Image Classification
 
-This sample application is written in python to show how to use a classification model on the RB3 Gen2 development platform. The [RB3 Gen2](https://docs.qualcomm.com/bundle/publicresource/topics/80-70020-253/qsg-landing-page.html?product=1601111740013077&facet=Quick%20Start%20Guide) device, a development platform designed to accelerate computing and connectivity capabilities for consumer and industrial IoT (Internet of Things) devices. The app can run on both Ubuntu 22.04 and [Qualcomm Linux 1.4](https://docs.qualcomm.com/bundle/publicresource/topics/80-70018-115/qualcomm-linux-docs-home.html?vproduct=1601111740013072&version=1.4). It allows users to select an image, run inference, and view the top 4 predictions with confidence bars in a graphical interface. The classification model is a quantized GoogLeNet[LiteRT](https://ai.google.dev/edge/litert) model, formerly known as TensorFlow Lite, Google's high-performance runtime for on-device AI. 
+This sample Python application demonstrates how to deploy and run a classification model on Qualcomm’s RB3 Gen2 and Rubik Pi development platforms. These platforms are designed to accelerate computing and connectivity for consumer and industrial IoT (Internet of Things) devices.
+
+The application is compatible with both Ubuntu 22.04 and Qualcomm Linux 1.4. It provides a graphical interface that allows users to:
+Select an image
+Run inference using a classification model
+View the top 4 predictions with confidence bars
+The model used is a quantized GoogLeNet implemented with LiteRT, formerly known as TensorFlow Lite—Google’s high-performance runtime for on-device AI.
 
 ---
 
-## 📦 Features
+# 📱 Hardware
 
-- GUI built with **GTK+ 3** using PyGObject
-- Image classification using **TensorFlow Lite**
-- Displays top-4 predictions with confidence percentages
-- Image preview
-- Softmax post-processing for probability normalization
+   ✅ RB3 Gen 2
+   ✅ Rubik Pi
 
 ---
 
@@ -18,6 +21,9 @@ This sample application is written in python to show how to use a classification
 
 ### RB3 Gen2 Device
 Follow RB3 Gen2 vision kit set up [instructions](https://docs.qualcomm.com/bundle/publicresource/topics/80-70020-251/set_up_the_device.html?product=1601111740013077&facet=User%20Guide) 
+
+### RB3 Gen2 Device
+Follow Rubik Pi set up [instructions](https://www.thundercomm.com/rubik-pi-3/en/docs/about-rubikpi/)
 
 ### Classification Model and Labels
 Download:
@@ -64,7 +70,7 @@ Output
  ![image](https://github.com/user-attachments/assets/d927546b-459b-4332-816a-9b8d505679a6)
 ---
 
-## 💻 Use GUI and expected output
+#📺 Use GUI and expected output
 
   - Click **"Select Image"** to choose an image file.
     ![image](https://github.com/user-attachments/assets/4f61215b-dbd2-4ee7-b185-650f360665c2)
