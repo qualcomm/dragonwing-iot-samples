@@ -29,7 +29,7 @@ Follow RB3 Gen2 vision kit set up [instructions](https://docs.qualcomm.com/bundl
 Follow Rubik Pi set up [instructions](https://www.thundercomm.com/rubik-pi-3/en/docs/about-rubikpi/)
 
 ### Classification Model and Labels
-Download:
+Download and push to device:
 - TFLite GoogLeNet-Quantized model from [AIHub](https://aihub.qualcomm.com/models/googlenet?domain=Computer+Vision&useCase=Image+Classification)
 - Imagenet dataset [labels](https://github.com/quic/ai-hub-models/blob/main/qai_hub_models/labels/imagenet_labels.txt)
 
