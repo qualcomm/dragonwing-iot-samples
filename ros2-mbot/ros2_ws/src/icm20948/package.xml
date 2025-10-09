@@ -3,9 +3,9 @@
 <package format="3">
   <name>icm20948</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="salvi@qti.qualcomm.com">salvi</maintainer>
-  <license>TODO: License declaration</license>
+  <description>ROS2 driver for ICM20948 IMU</description>
+  <maintainer email="quic_salvi@quicinc.com">quic-salvi</maintainer>
+  <license>BSD-3-Clause</license>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
