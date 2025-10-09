@@ -1,0 +1,10 @@
+# which four motors to set
+uint8[4] index
+# power to set per motor
+# [-255,255]
+int16[4] power
+---
+# 0 -> success
+# 1 -> motor index out-of-range
+# 2 -> motor power out-of-range
+uint8 error_code
