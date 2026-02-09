@@ -106,7 +106,9 @@ llama-cli -m ./qwen3B-quantized-q4.gguf -no-cnv --no-warmup -b 128 -c 2048 -s 11
 
 •	-fa off Disables flash attention optimization 
  
+<img width="956" height="310" alt="llama-cli test 1-a" src="https://github.com/user-attachments/assets/508c0789-97fa-4bde-baa0-8150c05bff7e" />
 
+<img width="955" height="380" alt="llama-cli test1" src="https://github.com/user-attachments/assets/62cd39ec-0e72-4d93-8563-11aa2b32ae3e" />
 
 ## **Serve the model using llama-server**
 We can make use of the llama-server to start a web server with a chat interface.
@@ -124,3 +126,8 @@ llama-server -m ./qwen3B-quantized-q4.gguf --no-warmup -b 128 -c 2048 -s 11 -n 5
 3)	Open a web browser and navigate to http://`<your device IP address>`:9876
 
 
+<img width="959" height="557" alt="llama server 1" src="https://github.com/user-attachments/assets/23609b08-6156-4a38-8707-79d5c9928bfa" />
+
+<img width="944" height="558" alt="llama server 2" src="https://github.com/user-attachments/assets/da3a8e44-c90f-4d8e-89b4-fc9d1052255c" />
+
+<img width="950" height="595" alt="llama -server 4" src="https://github.com/user-attachments/assets/5752fd29-2c5d-4d05-9515-2c86242d43f6" />
