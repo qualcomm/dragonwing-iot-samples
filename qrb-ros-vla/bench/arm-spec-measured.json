@@ -1,0 +1,77 @@
+{
+  "arm": "VUPN2355 6-DOF 25kg digital servo educational desktop robotic arm V2",
+  "servo": "TD-8125MG",
+  "pwm_driver": "HUAREW PCA9685",
+
+  "status": "assumed",
+  "_status_note": "Every value whose `sources` entry is \"assumed\" is a datasheet or product-page figure, or an inference from one -- NOT a measurement. The arm is in hand, so run m1_checklist and rewrite those values with `sources` set to \"measured\". bench/analyze_arm_envelope.py and the ablation runs stamp this file's status and hash into their output, so a number produced from assumed geometry is never mistaken for a measured one.",
+
+  "geometry": {
+    "reach_max_mm": 300.0,
+    "reach_min_mm": 80.0,
+    "positioning_joints": 5,
+    "has_gripper": true,
+    "base_travel_deg": 270.0,
+    "joint_travel_deg": 180.0,
+    "gripper_open_mm": 55.0
+  },
+
+  "servo_dynamics": {
+    "slew_s_per_60deg": 0.16,
+    "stall_torque_kgcm": 23.5,
+    "backlash_deg": 0.5
+  },
+
+  "pwm": {
+    "pulse_min_us": 500.0,
+    "pulse_max_us": 2500.0,
+    "pulse_center_us": 1500.0,
+    "resolution_bits": 12,
+    "frame_rate_hz": 50.0,
+    "frame_rate_hz_candidates": [50.0, 100.0, 200.0, 330.0]
+  },
+
+  "control": {
+    "command_rate_hz": 10.0,
+    "_command_rate_note": "Set by bench/libero-action-units.json: one env.step per predicted action, and the recorded episode is 10 Hz. 20 Hz playback degrades tracking from 9 mm to 207 mm, so this is not a free parameter."
+  },
+
+  "controller_scaling": {
+    "output_max_pos_m": 0.05,
+    "output_max_rot_rad": 0.5,
+    "_source": "robosuite OSC_POSE default (venv/.../robosuite/controllers/config/osc_pose.json), control_delta=true. Read back from the live env at runtime by the ablation harness and recorded in provenance -- these copies are for the offline envelope analysis only."
+  },
+
+  "libero_reference": {
+    "_robot_base_note": "THE BASE POSITION IS SCENE-DEPENDENT, so no single value is recorded here to be misused. Across libero_10, sim.data.get_body_xpos(robots[0].robot_model.root_body) returns three distinct values: [-0.51, 0, 0.42] (tasks 0,1,4,6,7), [-0.66, 0, 0.912] (tasks 2,3,8,9) and [-0.75, 0, 0.912] (task 5). Reach must be measured per task from the live sim, which bench/verify_arm_workspace.py does and bench/analyze_arm_envelope.py deliberately does not attempt.",
+    "franka_panda_reach_mm": 855.0,
+    "_reach_source": "Franka datasheet, for context on why LIBERO scenes span what they do. Not a measurement of ours."
+  },
+
+  "sources": {
+    "geometry.reach_max_mm": "assumed",
+    "geometry.reach_min_mm": "assumed",
+    "geometry.positioning_joints": "assumed",
+    "geometry.base_travel_deg": "assumed",
+    "geometry.joint_travel_deg": "assumed",
+    "geometry.gripper_open_mm": "assumed",
+    "servo_dynamics.slew_s_per_60deg": "assumed",
+    "servo_dynamics.stall_torque_kgcm": "assumed",
+    "servo_dynamics.backlash_deg": "assumed",
+    "pwm.pulse_min_us": "datasheet",
+    "pwm.pulse_max_us": "datasheet",
+    "pwm.pulse_center_us": "datasheet",
+    "pwm.resolution_bits": "datasheet",
+    "control.command_rate_hz": "measured"
+  },
+
+  "m1_checklist": [
+    "COUNT THE SERVOS and identify each axis. Confirm 5 positioning joints + 1 gripper, not 6 positioning joints. Everything in project_5dof() rests on this; if it is really 6 positioning joints, that whole ablation is unnecessary.",
+    "reach_max_mm: base pivot axis to the closed gripper tip, arm fully extended horizontally. NOT the 370 mm product-page bounding box, which includes the base plate.",
+    "reach_min_mm: smallest radius the tip can reach while still pointing usefully downward -- the dead zone directly over the base.",
+    "base_travel_deg / joint_travel_deg: drive each joint gently to each mechanical limit BY HAND (no power) and record the swept angle. Do not power into an endstop.",
+    "gripper_open_mm: jaw gap fully open.",
+    "backlash_deg: hold the link above a joint, wiggle the link below it, measure the free play at the tip in mm and convert using that joint's radius.",
+    "DEFERRED until the wiring brief's questions are settled -- these need the PCA9685 powered: pulse-width-to-angle calibration per servo, slew under load, gravity sag at full extension, per-servo current draw."
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "suite": "libero_10",
+  "max_steps": 520,
+  "seed": 0,
+  "null_successes": 0,
+  "true_at_reset": 0,
+  "trials": 24,
+  "pass": true,
+  "rows": [
+    {
+      "task_index": 0,
+      "policy": "zeros",
+      "init_index": 0,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 0,
+      "policy": "zeros",
+      "init_index": 1,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 0,
+      "policy": "zeros",
+      "init_index": 2,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 0,
+      "policy": "random",
+      "init_index": 0,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 0,
+      "policy": "random",
+      "init_index": 1,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 0,
+      "policy": "random",
+      "init_index": 2,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 1,
+      "policy": "zeros",
+      "init_index": 0,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 1,
+      "policy": "zeros",
+      "init_index": 1,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 1,
+      "policy": "zeros",
+      "init_index": 2,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 1,
+      "policy": "random",
+      "init_index": 0,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 1,
+      "policy": "random",
+      "init_index": 1,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 1,
+      "policy": "random",
+      "init_index": 2,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 2,
+      "policy": "zeros",
+      "init_index": 0,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 2,
+      "policy": "zeros",
+      "init_index": 1,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 2,
+      "policy": "zeros",
+      "init_index": 2,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 2,
+      "policy": "random",
+      "init_index": 0,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 2,
+      "policy": "random",
+      "init_index": 1,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 2,
+      "policy": "random",
+      "init_index": 2,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 3,
+      "policy": "zeros",
+      "init_index": 0,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 3,
+      "policy": "zeros",
+      "init_index": 1,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 3,
+      "policy": "zeros",
+      "init_index": 2,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 3,
+      "policy": "random",
+      "init_index": 0,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 3,
+      "policy": "random",
+      "init_index": 1,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    },
+    {
+      "task_index": 3,
+      "policy": "random",
+      "init_index": 2,
+      "success": false,
+      "success_at_start": false,
+      "steps": 520
+    }
+  ]
+}

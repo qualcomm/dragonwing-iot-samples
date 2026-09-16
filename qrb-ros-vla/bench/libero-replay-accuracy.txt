@@ -1,0 +1,16 @@
+[INFO] [1785289598.661117495] [vla_libero_replay]: frame  156 | MAE 0.0278 | normalized MAE 0.148 | grip pred -0.95 truth -1.00
+[INFO] [1785289599.802818231] [vla_libero_replay]: frame  168 | MAE 0.0323 | normalized MAE 0.150 | grip pred +0.98 truth +1.00
+
+LIBERO replay: 15 replanning steps, horizon 20, task 'put the white mug on the left plate and put the yellow and white mug on the right plate'
+    dim        MAE    MAE/std   action std
+     dx     0.0400      0.119        0.336
+     dy     0.0594      0.157        0.378
+     dz     0.0666      0.150        0.445
+  droll     0.0107      0.273        0.039
+ dpitch     0.0125      0.197        0.063
+   dyaw     0.0088      0.113        0.078
+   grip     0.0358      0.036        0.999
+    ALL     0.0334      0.149
+
+NPU latency: mean 1117.6 ms  p95 1123.4 ms  -> 0.89 chunks/s
+a 20-step horizon is 2.0 s of motion at 10.0 Hz, produced in 1.12 s (1.79x real time)

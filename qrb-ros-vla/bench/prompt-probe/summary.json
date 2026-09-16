@@ -1,0 +1,89 @@
+{
+  "scene": "/home/ubuntu/QRB-ROS-VLA/demo/scenes/sandbox_table.bddl",
+  "records": [
+    {
+      "prompt": "pick up the black bowl and place it on the plate",
+      "chunks": 4,
+      "steps": 24,
+      "path_length_m": 0.1824,
+      "net_displacement_m": 0.1771,
+      "ptp_x_m": 0.1296,
+      "ptp_y_m": 0.1175,
+      "ptp_z_m": 0.0298,
+      "lateral_reversals": 0,
+      "gripper_range": 0.0001,
+      "mean_abs_action_xyz": [
+        0.4897,
+        0.3838,
+        0.0848
+      ],
+      "mean_action_gripper": -0.974,
+      "backend": "libQnnHtp.so",
+      "mean_chunk_ms": 1120.3,
+      "filmstrip": "/home/ubuntu/QRB-ROS-VLA/bench/prompt-probe/probe_pick_up_the_black_bowl_and_place_it_on_the_plate.png"
+    },
+    {
+      "prompt": "wave hi",
+      "chunks": 4,
+      "steps": 24,
+      "path_length_m": 0.1702,
+      "net_displacement_m": 0.1648,
+      "ptp_x_m": 0.1267,
+      "ptp_y_m": 0.1029,
+      "ptp_z_m": 0.0246,
+      "lateral_reversals": 0,
+      "gripper_range": 0.0,
+      "mean_abs_action_xyz": [
+        0.4868,
+        0.3411,
+        0.0558
+      ],
+      "mean_action_gripper": -0.9812,
+      "backend": "libQnnHtp.so",
+      "mean_chunk_ms": 1124.6,
+      "filmstrip": "/home/ubuntu/QRB-ROS-VLA/bench/prompt-probe/probe_wave_hi.png"
+    },
+    {
+      "prompt": "raise your arm",
+      "chunks": 4,
+      "steps": 24,
+      "path_length_m": 0.1671,
+      "net_displacement_m": 0.163,
+      "ptp_x_m": 0.1203,
+      "ptp_y_m": 0.1081,
+      "ptp_z_m": 0.0226,
+      "lateral_reversals": 0,
+      "gripper_range": 0.0001,
+      "mean_abs_action_xyz": [
+        0.4578,
+        0.3549,
+        0.057
+      ],
+      "mean_action_gripper": -0.9852,
+      "backend": "libQnnHtp.so",
+      "mean_chunk_ms": 1126.8,
+      "filmstrip": "/home/ubuntu/QRB-ROS-VLA/bench/prompt-probe/probe_raise_your_arm.png"
+    },
+    {
+      "prompt": "open the gripper",
+      "chunks": 4,
+      "steps": 24,
+      "path_length_m": 0.1804,
+      "net_displacement_m": 0.1751,
+      "ptp_x_m": 0.1263,
+      "ptp_y_m": 0.1154,
+      "ptp_z_m": 0.0383,
+      "lateral_reversals": 0,
+      "gripper_range": 0.0001,
+      "mean_abs_action_xyz": [
+        0.4725,
+        0.3735,
+        0.1022
+      ],
+      "mean_action_gripper": -0.9857,
+      "backend": "libQnnHtp.so",
+      "mean_chunk_ms": 1113.6,
+      "filmstrip": "/home/ubuntu/QRB-ROS-VLA/bench/prompt-probe/probe_open_the_gripper.png"
+    }
+  ]
+}

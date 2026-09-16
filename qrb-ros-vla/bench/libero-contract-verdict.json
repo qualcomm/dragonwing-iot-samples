@@ -1,0 +1,42 @@
+{
+  "task": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+  "bddl": "/home/ubuntu/libero/LIBERO/libero/libero/bddl_files/libero_10/LIVING_ROOM_SCENE5_put_the_white_mug_on_the_left_plate_and_put_the_yellow_and_white_mug_on_the_right_plate.bddl",
+  "state_layout": {
+    "init_index": 7,
+    "reconstruction": "eef_pos + rotvec + gripper_qpos",
+    "max_abs_err": 0.020895834714430503,
+    "sim_state": [
+      -0.055098820207227714,
+      0.0032386855186824345,
+      0.6860237421264833,
+      3.1352205498135457,
+      0.01980249402581472,
+      -0.06904834911201603,
+      0.020833,
+      -0.020833
+    ]
+  },
+  "state_layout_confirmed": true,
+  "image_orientation": {
+    "agentview": {
+      "winner": "rot180",
+      "scores": {
+        "identity": -0.02122174530194371,
+        "flipud (vertical)": 0.22169938140168605,
+        "fliplr (horizontal)": -0.05323288806994352,
+        "rot180": 0.7249766891082431
+      }
+    },
+    "wrist": {
+      "winner": "rot180",
+      "scores": {
+        "identity": 0.12462467015571897,
+        "flipud (vertical)": 0.2547388724941955,
+        "fliplr (horizontal)": 0.15746234941721465,
+        "rot180": 0.29878762560179917
+      }
+    }
+  },
+  "mujoco_gl": "osmesa",
+  "note": "Re-verified byte-identically from the durable install at ~/libero after the harness defaults were changed to resolve paths from LIBERO's own config rather than a scratch directory."
+}

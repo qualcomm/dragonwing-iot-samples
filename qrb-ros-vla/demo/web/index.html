@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pi0.5 flexibility lab — ROS 2 + Hexagon NPU</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg:#100320; --panel:#21113b; --edge:#4c2a7c; --ink:#f8f2ff; --muted:#bfaee0;
+    --accent:#8f4cff; --good:#55e6a5; --warn:#ffd166; --bad:#ff7a8a; --script:#5bc8ff;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
+         background: radial-gradient(circle at top left, #35106b, var(--bg) 45rem); color:var(--ink); }
+  main { max-width: 1500px; margin: 0 auto; padding: 22px; }
+  h1 { margin:0 0 4px; font-size: clamp(1.6rem, 3.2vw, 2.6rem); letter-spacing:-0.04em; }
+  .subtitle { color: var(--muted); margin:0 0 18px; max-width: 90ch; line-height:1.5; }
+  .grid { display:grid; grid-template-columns: minmax(420px, 1.25fr) minmax(380px, 1fr); gap:18px; align-items:start; }
+  .card { background:#21113bec; border:1px solid var(--edge); border-radius:18px; padding:16px; margin-bottom:16px; }
+  .card h3 { margin:0 0 4px; font-size:1rem; letter-spacing:.02em; }
+  .hint { color:var(--muted); font-size:.84rem; margin:0 0 12px; line-height:1.45; }
+  form { display:flex; gap:8px; }
+  input, select { flex:1; min-width:0; border:1px solid #68409f; border-radius:11px; padding:11px 12px;
+          background:#130a24; color:var(--ink); font-size:.95rem; font-family:inherit; }
+  button { border:0; border-radius:11px; padding:11px 14px; color:#fff; font-weight:700; cursor:pointer;
+           background:linear-gradient(135deg, var(--accent), #4e23c4); font-size:.92rem; font-family:inherit; }
+  button.ghost { background:#180b2f; border:1px solid #68409f; color:var(--muted); font-weight:600; }
+  button.script { background:linear-gradient(135deg,#2f7fb5,#1b5c8a); }
+  button:disabled { opacity:.45; cursor:not-allowed; }
+  .row { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+  .chips { display:flex; flex-wrap:wrap; gap:7px; margin-top:10px; }
+  .chip { border:1px solid #68409f; background:#180b2f; color:var(--ink); border-radius:999px;
+          padding:7px 11px; cursor:pointer; font-size:.85rem; font-weight:500; }
+  .chip .tag { font-size:.68rem; text-transform:uppercase; letter-spacing:.07em; margin-left:6px; opacity:.75; }
+  .chip.trained { border-color:#3f8f6f; } .chip.trained .tag { color:var(--good); }
+  .chip.unseen  { border-color:#8a6a2f; } .chip.unseen  .tag { color:var(--warn); }
+  .views { display:grid; grid-template-columns: 1fr; gap:10px; }
+  .stage { position:relative; }
+  .stage img { display:block; width:100%; background:#090511; border:1px solid var(--edge); border-radius:14px; }
+  .stage .cap { position:absolute; left:10px; top:10px; background:#0a0616cc; border:1px solid var(--edge);
+                border-radius:8px; padding:4px 8px; font-size:.74rem; color:var(--muted); }
+  .modelviews { display:grid; grid-template-columns: 1fr 1fr; gap:10px; }
+  .badge { display:inline-flex; align-items:center; gap:6px; border-radius:999px; padding:5px 11px;
+           font-size:.8rem; font-weight:700; border:1px solid var(--edge); background:#130a24; }
+  .badge.vla { color:var(--accent); border-color:var(--accent); }
+  .badge.scripted { color:var(--script); border-color:#2f7fb5; }
+  .badge.ab { color:var(--warn); border-color:#8a6a2f; }
+  .badge.idle { color:var(--muted); }
+  .metrics { display:grid; grid-template-columns:repeat(4,1fr); gap:9px; margin-top:12px; }
+  .metric { background:#130a24; border:1px solid #3a245d; border-radius:12px; padding:9px 10px; }
+  .label { color:var(--muted); font-size:.7rem; text-transform:uppercase; letter-spacing:.08em; }
+  .value { font-size:1.15rem; font-weight:800; margin-top:3px; }
+  pre { white-space:pre-wrap; background:#0b0613; border:1px solid #332050; border-radius:12px;
+        padding:11px; font-size:.83rem; line-height:1.5; margin:10px 0 0; max-height:230px; overflow:auto; }
+  .good { color:var(--good); } .warn { color:var(--warn); } .bad { color:var(--bad); } .muted { color:var(--muted); }
+  .ab-verdict { font-size:1.02rem; font-weight:700; margin-top:10px; line-height:1.45; }
+  .bars { margin-top:10px; }
+  .bar { display:grid; grid-template-columns: 190px 1fr 62px; gap:9px; align-items:center; margin-bottom:6px; font-size:.82rem; }
+  .bar .track { background:#130a24; border:1px solid #3a245d; border-radius:6px; height:15px; overflow:hidden; }
+  .bar .fill { height:100%; background:linear-gradient(90deg,var(--accent),#5bc8ff); }
+  .bar .fill.floor { background:#5a4a78; }
+  .scene-meta { color:var(--muted); font-size:.83rem; margin-top:8px; line-height:1.5; }
+  @media (max-width:1080px) { .grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Pi0.5 flexibility lab</h1>
+  <p class="subtitle">
+    One frozen VLA on the Hexagon NPUs, a Panda arm in MuJoCo, and 41 worlds you can swap live without
+    reloading the model. Type any command you like. Every lane below is labelled with what actually
+    produced the motion, because the deployed bundle is <code>lerobot/pi05_libero</code> — fine-tuned on
+    tabletop manipulation, so its language flexibility has a real edge, and this page shows you where it is.
+  </p>
+
+  <section class="grid">
+    <div>
+      <div class="card">
+        <h3>World</h3>
+        <p class="hint">Same weights every time. Switching a world reloads only the simulator.</p>
+        <form id="scene-form">
+          <select id="scene-select"></select>
+          <button type="submit">Load world</button>
+        </form>
+        <div class="scene-meta" id="scene-meta">loading catalog…</div>
+      </div>
+
+      <div class="card">
+        <div class="views">
+          <div class="stage">
+            <img id="presenter" alt="presenter view of the arm" />
+            <div class="cap">presenter camera · <span id="prov-cap">idle</span></div>
+          </div>
+          <div class="modelviews">
+            <div class="stage"><img id="model0" alt="agentview, as the policy sees it" />
+              <div class="cap">policy input · agentview 256</div></div>
+            <div class="stage"><img id="model1" alt="wrist camera, as the policy sees it" />
+              <div class="cap">policy input · wrist 256</div></div>
+          </div>
+        </div>
+        <div class="metrics">
+          <div class="metric"><div class="label">lane</div><div class="value" id="lane">idle</div></div>
+          <div class="metric"><div class="label">chunks</div><div class="value" id="chunks">0</div></div>
+          <div class="metric"><div class="label">sim steps</div><div class="value" id="steps">0</div></div>
+          <div class="metric"><div class="label">chunk latency</div><div class="value" id="latency">--</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <h3>1 · VLA lane <span class="badge vla">Pi0.5 · NPU</span></h3>
+        <p class="hint">Your text goes verbatim to <code>/qrb_ros_vla/task</code>. The model replans every
+          chunk against the live camera frames. <span class="good">green</span> chips are this world's
+          demonstrated instruction; <span class="warn">amber</span> chips are its objects in wording the
+          policy was never shown.</p>
+        <form id="task-form">
+          <input id="task" autocomplete="off" placeholder="put the black bowl on the plate" />
+          <button type="submit">Run on NPU</button>
+        </form>
+        <div class="row">
+          <button class="ghost" id="stop">Stop</button>
+          <button class="ghost" id="reset">Reset scene</button>
+          <button class="ghost" id="reset-all" title="Reload the startup world and clear every panel">Reset everything</button>
+        </div>
+        <div class="chips" id="chips"></div>
+      </div>
+
+      <div class="card">
+        <h3>2 · A/B language probe <span class="badge ab">proof, not vibes</span></h3>
+        <p class="hint">Freezes one observation and asks for three chunks: prompt A, prompt B, then A again.
+          The third is the repeat-noise floor. If A-vs-B clears that floor, the wording changed the plan —
+          measured, on stage, in units of the dataset's action std. Takes about 3.5 s.
+          It probes from the scene's start pose by default, because the answer depends on the pose: with the
+          gripper already closing on an object the plan is decided and both prompts agree. Untick to probe
+          wherever the arm currently is.</p>
+        <form id="ab-form">
+          <input id="ab-a" autocomplete="off" placeholder="pick up the black bowl" />
+          <input id="ab-b" autocomplete="off" placeholder="pick up the plate" />
+          <button type="submit" id="ab-run">Probe</button>
+        </form>
+        <label class="hint" style="display:flex;gap:7px;align-items:center;margin:9px 0 0">
+          <input type="checkbox" id="ab-from-start" checked style="flex:0 0 auto;width:auto" />
+          reset to the scene start pose first (deterministic, comparable run to run)
+        </label>
+        <div id="ab-out"></div>
+      </div>
+
+      <div class="card">
+        <h3>3 · Scripted lane <span class="badge scripted">no model in the loop</span></h3>
+        <p class="hint">Hand-written open-loop trajectories in the same 7-DoF action space
+          (<code>demo/scripted_gestures.py</code>). These are here <em>because</em> the VLA cannot do them:
+          non-manipulation prompts measure indistinguishable from each other, so a "wave" driven by the
+          policy would be theatre. This lane is honest about being choreography.</p>
+        <div class="chips" id="gestures"></div>
+      </div>
+
+      <div class="card">
+        <h3>Telemetry</h3>
+        <pre id="log">connecting…</pre>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+let catalog = { scenes: [], gestures: [] };
+let currentScene = null;
+
+function post(path, body) {
+  return fetch(path, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+                       body: JSON.stringify(body || {}) });
+}
+
+async function loadCatalog() {
+  catalog = await (await fetch('/api/catalog')).json();
+  const select = $('scene-select');
+  select.textContent = '';
+  for (const scene of catalog.scenes) {
+    const option = document.createElement('option');
+    option.value = scene.scene_id;
+    option.textContent = scene.label;
+    select.appendChild(option);
+  }
+  const gestures = $('gestures');
+  gestures.textContent = '';
+  for (const gesture of catalog.gestures) {
+    const button = document.createElement('button');
+    button.className = 'chip'; button.type = 'button';
+    button.style.borderColor = '#2f7fb5';
+    button.innerHTML = `${gesture.label}<span class="tag" style="color:var(--script)">scripted · ${gesture.steps} steps</span>`;
+    button.title = gesture.description;
+    button.onclick = () => post('/api/gesture', { name: gesture.name });
+    gestures.appendChild(button);
+  }
+}
+
+function renderScene(scene) {
+  if (!scene || scene.scene_id === (currentScene && currentScene.scene_id)) return;
+  currentScene = scene;
+  $('scene-select').value = scene.scene_id;
+  const nouns = (scene.objects || []).concat(scene.fixtures || []);
+  $('scene-meta').innerHTML =
+    `<b>in this world:</b> ${nouns.join(', ') || '(nothing but the arm)'}<br>` +
+    (scene.source === 'libero'
+      ? `<b>demonstrated instruction:</b> ${scene.trained_instruction}`
+      : `<b>local sandbox</b> — no demonstrated instruction exists for this world, so every prompt here is off-script`);
+  const chips = $('chips');
+  chips.textContent = '';
+  for (const chip of scene.suggestions || []) {
+    const button = document.createElement('button');
+    button.className = `chip ${chip.kind}`; button.type = 'button';
+    button.innerHTML = `${chip.text}<span class="tag">${chip.kind}</span>`;
+    button.onclick = () => { $('task').value = chip.text; post('/api/task', { task: chip.text }); };
+    chips.appendChild(button);
+  }
+  const pair = scene.ab_pair || [];
+  if (pair.length === 2) { $('ab-a').value = pair[0]; $('ab-b').value = pair[1]; }
+}
+
+function renderAb(ab, running) {
+  const out = $('ab-out');
+  $('ab-run').disabled = !!running;
+  if (running) { out.innerHTML = '<div class="ab-verdict muted">running three chunks on the NPU…</div>'; return; }
+  if (!ab) { out.innerHTML = ''; return; }
+  if (ab.error) { out.innerHTML = `<div class="ab-verdict bad">${ab.error}</div>`; return; }
+  const scale = Math.max(ab.pair_diff, ab.noise_floor) * 1.15 || 1;
+  const bar = (name, value, floor) =>
+    `<div class="bar"><span class="muted">${name}</span>` +
+    `<span class="track"><span class="fill ${floor ? 'floor' : ''}" style="width:${(100 * value / scale).toFixed(1)}%"></span></span>` +
+    `<span>${value.toFixed(3)}</span></div>`;
+  out.innerHTML =
+    `<div class="ab-verdict ${ab.language_changed_the_plan ? 'good' : 'bad'}">${ab.summary}</div>` +
+    `<div class="bars">` +
+      bar(`A vs B`, ab.pair_diff, false) +
+      bar(`same prompt twice (floor)`, ab.noise_floor, true) +
+    `</div>` +
+    `<pre>probed from: ${ab.pose}\nA: ${ab.prompt_a}\n   first action [${ab.first_action_a.join(', ')}]\n` +
+    `B: ${ab.prompt_b}\n   first action [${ab.first_action_b.join(', ')}]</pre>`;
+}
+
+function render(state) {
+  renderScene(state.scene);
+  renderAb(state.ab, state.ab_running);
+  $('lane').textContent = state.lane;
+  $('chunks').textContent = state.chunks;
+  $('steps').textContent = state.steps;
+  $('latency').textContent = state.stats ? state.stats.total_ms.toFixed(0) + ' ms' : '--';
+  $('prov-cap').textContent = state.provenance;
+
+  const backend = state.stats ? state.stats.backend : 'waiting';
+  const npuOk = backend === 'libQnnHtp.so';
+  const laneNote = {
+    vla: '<span class="badge vla">Pi0.5 · NPU</span> the model is choosing these actions',
+    scripted: '<span class="badge scripted">scripted</span> hand-written trajectory, model idle',
+    ab: '<span class="badge ab">A/B probe</span> simulator frozen, comparing chunks',
+    idle: '<span class="badge idle">idle</span> nothing running'
+  }[state.lane] || '';
+
+  $('log').innerHTML =
+    laneNote + '\n' +
+    `<span class="${npuOk ? 'good' : 'warn'}">${npuOk ? 'NPU confirmed: libQnnHtp.so' : 'backend: ' + backend}</span>\n` +
+    `note: ${state.note}\n` +
+    `world: ${state.scene_id}\n` +
+    `prompt on /qrb_ros_vla/task: ${state.task || '(none)'}\n` +
+    `latest action: [${(state.first_action || []).map(v => v.toFixed(3)).join(', ') || '--'}]\n` +
+    `action range: ${state.action_range ? '[' + state.action_range.map(v => v.toFixed(3)).join(', ') + ']' : '--'}\n` +
+    (state.stats
+      ? `vision ${state.stats.vision_encoder_ms.toFixed(1)} | token ${state.stats.token_emb_ms.toFixed(1)} | ` +
+        `backbone ${state.stats.backbone_ms.toFixed(1)} | expert ${state.stats.action_expert_ms.toFixed(1)} ms`
+      : 'waiting for VLA stats');
+}
+
+$('task-form').onsubmit = (e) => {
+  e.preventDefault();
+  const task = $('task').value.trim();
+  if (task) post('/api/task', { task });
+};
+$('scene-form').onsubmit = (e) => {
+  e.preventDefault();
+  post('/api/scene', { scene_id: $('scene-select').value });
+};
+$('ab-form').onsubmit = (e) => {
+  e.preventDefault();
+  post('/api/probe', { a: $('ab-a').value.trim(), b: $('ab-b').value.trim(),
+                       from_current: !$('ab-from-start').checked });
+};
+$('stop').onclick = () => post('/api/stop');
+$('reset').onclick = () => post('/api/reset');
+$('reset-all').onclick = async () => {
+  await post('/api/reset', { all: true });
+  // Clear what lives only in the browser, and force the scene panel to repopulate:
+  // a full reset can land on the world already selected, which renderScene would
+  // otherwise skip as unchanged, leaving stale chips and A/B prompts on screen.
+  $('task').value = '';
+  $('ab-a').value = '';
+  $('ab-b').value = '';
+  $('ab-from-start').checked = true;
+  $('ab-out').innerHTML = '';
+  currentScene = null;
+};
+
+$('presenter').src = '/mjpeg?kind=presenter';
+$('model0').src = '/mjpeg?kind=model0';
+$('model1').src = '/mjpeg?kind=model1';
+
+loadCatalog().then(() => {
+  const events = new EventSource('/stream');
+  events.onmessage = (event) => render(JSON.parse(event.data));
+  events.onerror = () => { $('log').textContent = 'stream disconnected — refresh the page'; };
+});
+</script>
+</body>
+</html>

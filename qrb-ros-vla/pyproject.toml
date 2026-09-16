@@ -1,0 +1,11 @@
+[project]
+name = "qrb-ros-vla"
+version = "0.1.0"
+description = "Pi0.5 vision-language-action demo for ROS 2 Jazzy on Qualcomm Dragonwing IQ-9075"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[build-system]
+requires = ["uv_build>=0.12.0,<0.13.0"]
+build-backend = "uv_build"

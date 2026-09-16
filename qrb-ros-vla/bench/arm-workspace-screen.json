@@ -1,0 +1,2189 @@
+{
+  "suite": "libero_10",
+  "arm_spec_status": "assumed",
+  "arm_spec_digest": "1f02954e7397",
+  "arm_reach_max_mm": 300.0,
+  "arm_reach_min_mm": 80.0,
+  "episodes_per_task": 5,
+  "init_start": 0,
+  "settle": 10,
+  "tasks_fitting": 0,
+  "tasks_total": 10,
+  "scale_factor_range": [
+    2.01,
+    2.5
+  ],
+  "verdict": "0/10 tasks fit within a 300 mm reach. Scene exceeds the arm by 2.01x to 2.50x.",
+  "tasks": [
+    {
+      "task_index": 0,
+      "language": "put both the alphabet soup and the tomato sauce in the basket",
+      "inits": [
+        {
+          "init_index": 0,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 283.6,
+          "radial_max_mm": 619.6,
+          "dist3d_max_mm": 620.2,
+          "points": {
+            "eef_start": {
+              "radial_mm": 463.9,
+              "dist3d_mm": 542.9,
+              "dz_mm": 282.0
+            },
+            "alphabet_soup_1": {
+              "radial_mm": 437.1,
+              "dist3d_mm": 440.6,
+              "dz_mm": 55.2
+            },
+            "cream_cheese_1": {
+              "radial_mm": 619.6,
+              "dist3d_mm": 620.2,
+              "dz_mm": 25.7
+            },
+            "tomato_sauce_1": {
+              "radial_mm": 396.7,
+              "dist3d_mm": 400.5,
+              "dz_mm": 55.2
+            },
+            "ketchup_1": {
+              "radial_mm": 283.6,
+              "dist3d_mm": 297.3,
+              "dz_mm": 89.2
+            },
+            "orange_juice_1": {
+              "radial_mm": 581.0,
+              "dist3d_mm": 587.4,
+              "dz_mm": 86.5
+            },
+            "milk_1": {
+              "radial_mm": 572.3,
+              "dist3d_mm": 578.8,
+              "dz_mm": 86.5
+            },
+            "butter_1": {
+              "radial_mm": 582.8,
+              "dist3d_mm": 583.4,
+              "dz_mm": 25.5
+            },
+            "basket_1": {
+              "radial_mm": 574.7,
+              "dist3d_mm": 574.9,
+              "dz_mm": 12.2
+            }
+          }
+        },
+        {
+          "init_index": 1,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 329.6,
+          "radial_max_mm": 649.1,
+          "dist3d_max_mm": 649.6,
+          "points": {
+            "eef_start": {
+              "radial_mm": 450.4,
+              "dist3d_mm": 517.6,
+              "dz_mm": 255.1
+            },
+            "alphabet_soup_1": {
+              "radial_mm": 421.5,
+              "dist3d_mm": 425.1,
+              "dz_mm": 55.2
+            },
+            "cream_cheese_1": {
+              "radial_mm": 649.1,
+              "dist3d_mm": 649.6,
+              "dz_mm": 25.7
+            },
+            "tomato_sauce_1": {
+              "radial_mm": 410.2,
+              "dist3d_mm": 413.9,
+              "dz_mm": 55.2
+            },
+            "ketchup_1": {
+              "radial_mm": 329.6,
+              "dist3d_mm": 341.5,
+              "dz_mm": 89.2
+            },
+            "orange_juice_1": {
+              "radial_mm": 552.6,
+              "dist3d_mm": 559.3,
+              "dz_mm": 86.5
+            },
+            "milk_1": {
+              "radial_mm": 548.7,
+              "dist3d_mm": 555.5,
+              "dz_mm": 86.5
+            },
+            "butter_1": {
+              "radial_mm": 578.7,
+              "dist3d_mm": 579.3,
+              "dz_mm": 25.5
+            },
+            "basket_1": {
+              "radial_mm": 579.8,
+              "dist3d_mm": 579.9,
+              "dz_mm": 12.2
+            }
+          }
+        },
+        {
+          "init_index": 2,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 312.5,
+          "radial_max_mm": 711.7,
+          "dist3d_max_mm": 712.2,
+          "points": {
+            "eef_start": {
+              "radial_mm": 458.4,
+              "dist3d_mm": 531.7,
+              "dz_mm": 269.5
+            },
+            "alphabet_soup_1": {
+              "radial_mm": 438.1,
+              "dist3d_mm": 441.5,
+              "dz_mm": 55.2
+            },
+            "cream_cheese_1": {
+              "radial_mm": 711.7,
+              "dist3d_mm": 712.2,
+              "dz_mm": 25.7
+            },
+            "tomato_sauce_1": {
+              "radial_mm": 430.7,
+              "dist3d_mm": 434.3,
+              "dz_mm": 55.2
+            },
+            "ketchup_1": {
+              "radial_mm": 312.5,
+              "dist3d_mm": 325.0,
+              "dz_mm": 89.2
+            },
+            "orange_juice_1": {
+              "radial_mm": 568.6,
+              "dist3d_mm": 575.2,
+              "dz_mm": 86.7
+            },
+            "milk_1": {
+              "radial_mm": 560.3,
+              "dist3d_mm": 567.0,
+              "dz_mm": 86.5
+            },
+            "butter_1": {
+              "radial_mm": 577.7,
+              "dist3d_mm": 578.2,
+              "dz_mm": 25.5
+            },
+            "basket_1": {
+              "radial_mm": 559.8,
+              "dist3d_mm": 559.9,
+              "dz_mm": 12.2
+            }
+          }
+        },
+        {
+          "init_index": 3,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 291.6,
+          "radial_max_mm": 634.4,
+          "dist3d_max_mm": 634.9,
+          "points": {
+            "eef_start": {
+              "radial_mm": 456.1,
+              "dist3d_mm": 527.7,
+              "dz_mm": 265.5
+            },
+            "alphabet_soup_1": {
+              "radial_mm": 427.0,
+              "dist3d_mm": 430.5,
+              "dz_mm": 55.2
+            },
+            "cream_cheese_1": {
+              "radial_mm": 634.4,
+              "dist3d_mm": 634.9,
+              "dz_mm": 25.7
+            },
+            "tomato_sauce_1": {
+              "radial_mm": 399.1,
+              "dist3d_mm": 402.9,
+              "dz_mm": 55.2
+            },
+            "ketchup_1": {
+              "radial_mm": 291.6,
+              "dist3d_mm": 304.9,
+              "dz_mm": 89.2
+            },
+            "orange_juice_1": {
+              "radial_mm": 555.1,
+              "dist3d_mm": 561.8,
+              "dz_mm": 86.5
+            },
+            "milk_1": {
+              "radial_mm": 588.9,
+              "dist3d_mm": 595.2,
+              "dz_mm": 86.5
+            },
+            "butter_1": {
+              "radial_mm": 574.8,
+              "dist3d_mm": 575.4,
+              "dz_mm": 25.5
+            },
+            "basket_1": {
+              "radial_mm": 569.2,
+              "dist3d_mm": 569.3,
+              "dz_mm": 12.2
+            }
+          }
+        },
+        {
+          "init_index": 4,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 316.5,
+          "radial_max_mm": 651.4,
+          "dist3d_max_mm": 651.9,
+          "points": {
+            "eef_start": {
+              "radial_mm": 454.5,
+              "dist3d_mm": 526.8,
+              "dz_mm": 266.3
+            },
+            "alphabet_soup_1": {
+              "radial_mm": 459.1,
+              "dist3d_mm": 462.4,
+              "dz_mm": 55.2
+            },
+            "cream_cheese_1": {
+              "radial_mm": 651.4,
+              "dist3d_mm": 651.9,
+              "dz_mm": 25.7
+            },
+            "tomato_sauce_1": {
+              "radial_mm": 395.1,
+              "dist3d_mm": 399.0,
+              "dz_mm": 55.2
+            },
+            "ketchup_1": {
+              "radial_mm": 316.5,
+              "dist3d_mm": 328.8,
+              "dz_mm": 89.2
+            },
+            "orange_juice_1": {
+              "radial_mm": 559.8,
+              "dist3d_mm": 566.5,
+              "dz_mm": 86.5
+            },
+            "milk_1": {
+              "radial_mm": 590.9,
+              "dist3d_mm": 597.2,
+              "dz_mm": 86.5
+            },
+            "butter_1": {
+              "radial_mm": 585.3,
+              "dist3d_mm": 585.8,
+              "dz_mm": 25.5
+            },
+            "basket_1": {
+              "radial_mm": 571.0,
+              "dist3d_mm": 571.1,
+              "dz_mm": 12.2
+            }
+          }
+        }
+      ],
+      "radial_max_mm": 711.7,
+      "radial_min_mm": 283.6,
+      "dist3d_max_mm": 712.2,
+      "arm_reach_max_mm": 300.0,
+      "scale_factor_needed": 2.37,
+      "fits": false
+    },
+    {
+      "task_index": 1,
+      "language": "put both the cream cheese box and the butter in the basket",
+      "inits": [
+        {
+          "init_index": 0,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 294.4,
+          "radial_max_mm": 635.6,
+          "dist3d_max_mm": 636.1,
+          "points": {
+            "eef_start": {
+              "radial_mm": 453.7,
+              "dist3d_mm": 523.4,
+              "dz_mm": 261.0
+            },
+            "alphabet_soup_1": {
+              "radial_mm": 434.9,
+              "dist3d_mm": 438.4,
+              "dz_mm": 55.2
+            },
+            "cream_cheese_1": {
+              "radial_mm": 635.6,
+              "dist3d_mm": 636.1,
+              "dz_mm": 25.7
+            },
+            "tomato_sauce_1": {
+              "radial_mm": 427.7,
+              "dist3d_mm": 431.3,
+              "dz_mm": 55.2
+            },
+            "ketchup_1": {
+              "radial_mm": 294.4,
+              "dist3d_mm": 307.6,
+              "dz_mm": 89.2
+            },
+            "orange_juice_1": {
+              "radial_mm": 554.0,
+              "dist3d_mm": 560.7,
+              "dz_mm": 86.5
+            },
+            "milk_1": {
+              "radial_mm": 586.1,
+              "dist3d_mm": 592.4,
+              "dz_mm": 86.5
+            },
+            "butter_1": {
+              "radial_mm": 561.9,
+              "dist3d_mm": 562.5,
+              "dz_mm": 25.5
+            },
+            "basket_1": {
+              "radial_mm": 580.8,
+              "dist3d_mm": 581.0,
+              "dz_mm": 12.2
+            }
+          }
+        },
+        {
+          "init_index": 1,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 285.6,
+          "radial_max_mm": 628.0,
+          "dist3d_max_mm": 628.5,
+          "points": {
+            "eef_start": {
+              "radial_mm": 462.6,
+              "dist3d_mm": 535.6,
+              "dz_mm": 270.0
+            },
+            "alphabet_soup_1": {
+              "radial_mm": 456.6,
+              "dist3d_mm": 460.0,
+              "dz_mm": 55.2
+            },
+            "cream_cheese_1": {
+              "radial_mm": 628.0,
+              "dist3d_mm": 628.5,
+              "dz_mm": 25.7
+            },
+            "tomato_sauce_1": {
+              "radial_mm": 393.3,
+              "dist3d_mm": 397.2,
+              "dz_mm": 55.2
+            },
+            "ketchup_1": {
+              "radial_mm": 285.6,
+              "dist3d_mm": 299.2,
+              "dz_mm": 89.2
+            },
+            "orange_juice_1": {
+              "radial_mm": 551.9,
+              "dist3d_mm": 558.6,
+              "dz_mm": 86.5
+            },
+            "milk_1": {
+              "radial_mm": 569.5,
+              "dist3d_mm": 576.0,
+              "dz_mm": 86.5
+            },
+            "butter_1": {
+              "radial_mm": 548.7,
+              "dist3d_mm": 549.3,
+              "dz_mm": 25.5
+            },
+            "basket_1": {
+              "radial_mm": 577.6,
+              "dist3d_mm": 577.7,
+              "dz_mm": 12.2
+            }
+          }
+        },
+        {
+          "init_index": 2,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 320.6,
+          "radial_max_mm": 652.6,
+          "dist3d_max_mm": 653.1,
+          "points": {
+            "eef_start": {
+              "radial_mm": 447.6,
+              "dist3d_mm": 516.7,
+              "dz_mm": 258.1
+            },
+            "alphabet_soup_1": {
+              "radial_mm": 424.8,
+              "dist3d_mm": 428.4,
+              "dz_mm": 55.2
+            },
+            "cream_cheese_1": {
+              "radial_mm": 652.6,
+              "dist3d_mm": 653.1,
+              "dz_mm": 25.7
+            },
+            "tomato_sauce_1": {
+              "radial_mm": 412.6,
+              "dist3d_mm": 416.2,
+              "dz_mm": 55.2
+            },
+            "ketchup_1": {
+              "radial_mm": 320.6,
+              "dist3d_mm": 332.8,
+              "dz_mm": 89.2
+            },
+            "orange_juice_1": {
+              "radial_mm": 550.6,
+              "dist3d_mm": 557.4,
+              "dz_mm": 86.5
+            },
+            "milk_1": {
+              "radial_mm": 547.8,
+              "dist3d_mm": 554.6,
+              "dz_mm": 86.5
+            },
+            "butter_1": {
+              "radial_mm": 541.1,
+              "dist3d_mm": 541.7,
+              "dz_mm": 25.5
+            },
+            "basket_1": {
+              "radial_mm": 564.7,
+              "dist3d_mm": 564.8,
+              "dz_mm": 12.2
+            }
+          }
+        },
+        {
+          "init_index": 3,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 276.3,
+          "radial_max_mm": 660.0,
+          "dist3d_max_mm": 660.5,
+          "points": {
+            "eef_start": {
+              "radial_mm": 458.0,
+              "dist3d_mm": 534.7,
+              "dz_mm": 275.9
+            },
+            "alphabet_soup_1": {
+              "radial_mm": 457.7,
+              "dist3d_mm": 461.0,
+              "dz_mm": 55.2
+            },
+            "cream_cheese_1": {
+              "radial_mm": 660.0,
+              "dist3d_mm": 660.5,
+              "dz_mm": 25.7
+            },
+            "tomato_sauce_1": {
+              "radial_mm": 403.3,
+              "dist3d_mm": 407.0,
+              "dz_mm": 55.2
+            },
+            "ketchup_1": {
+              "radial_mm": 276.3,
+              "dist3d_mm": 290.3,
+              "dz_mm": 89.2
+            },
+            "orange_juice_1": {
+              "radial_mm": 550.3,
+              "dist3d_mm": 557.1,
+              "dz_mm": 86.5
+            },
+            "milk_1": {
+              "radial_mm": 550.5,
+              "dist3d_mm": 557.3,
+              "dz_mm": 86.5
+            },
+            "butter_1": {
+              "radial_mm": 583.5,
+              "dist3d_mm": 584.1,
+              "dz_mm": 25.5
+            },
+            "basket_1": {
+              "radial_mm": 568.3,
+              "dist3d_mm": 568.4,
+              "dz_mm": 12.2
+            }
+          }
+        },
+        {
+          "init_index": 4,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 319.3,
+          "radial_max_mm": 623.7,
+          "dist3d_max_mm": 624.3,
+          "points": {
+            "eef_start": {
+              "radial_mm": 454.9,
+              "dist3d_mm": 529.7,
+              "dz_mm": 271.2
+            },
+            "alphabet_soup_1": {
+              "radial_mm": 426.9,
+              "dist3d_mm": 430.5,
+              "dz_mm": 55.2
+            },
+            "cream_cheese_1": {
+              "radial_mm": 623.7,
+              "dist3d_mm": 624.3,
+              "dz_mm": 25.7
+            },
+            "tomato_sauce_1": {
+              "radial_mm": 403.5,
+              "dist3d_mm": 407.2,
+              "dz_mm": 55.2
+            },
+            "ketchup_1": {
+              "radial_mm": 319.3,
+              "dist3d_mm": 331.5,
+              "dz_mm": 89.2
+            },
+            "orange_juice_1": {
+              "radial_mm": 559.5,
+              "dist3d_mm": 566.1,
+              "dz_mm": 86.5
+            },
+            "milk_1": {
+              "radial_mm": 581.4,
+              "dist3d_mm": 587.8,
+              "dz_mm": 86.5
+            },
+            "butter_1": {
+              "radial_mm": 562.6,
+              "dist3d_mm": 563.1,
+              "dz_mm": 25.5
+            },
+            "basket_1": {
+              "radial_mm": 578.5,
+              "dist3d_mm": 578.6,
+              "dz_mm": 12.2
+            }
+          }
+        }
+      ],
+      "radial_max_mm": 660.0,
+      "radial_min_mm": 276.3,
+      "dist3d_max_mm": 660.5,
+      "arm_reach_max_mm": 300.0,
+      "scale_factor_needed": 2.2,
+      "fits": false
+    },
+    {
+      "task_index": 2,
+      "language": "turn on the stove and put the moka pot on it",
+      "inits": [
+        {
+          "init_index": 0,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 459.0,
+          "radial_max_mm": 690.3,
+          "dist3d_max_mm": 692.4,
+          "points": {
+            "eef_start": {
+              "radial_mm": 459.0,
+              "dist3d_mm": 536.3,
+              "dz_mm": 277.3
+            },
+            "chefmate_8_frypan_1": {
+              "radial_mm": 645.9,
+              "dist3d_mm": 646.1,
+              "dz_mm": -12.8
+            },
+            "moka_pot_1": {
+              "radial_mm": 690.3,
+              "dist3d_mm": 692.4,
+              "dz_mm": 54.1
+            },
+            "flat_stove_1": {
+              "radial_mm": 509.2,
+              "dist3d_mm": 509.3,
+              "dz_mm": -7.0
+            }
+          }
+        },
+        {
+          "init_index": 1,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 454.3,
+          "radial_max_mm": 720.6,
+          "dist3d_max_mm": 722.6,
+          "points": {
+            "eef_start": {
+              "radial_mm": 454.3,
+              "dist3d_mm": 526.6,
+              "dz_mm": 266.3
+            },
+            "chefmate_8_frypan_1": {
+              "radial_mm": 673.4,
+              "dist3d_mm": 673.6,
+              "dz_mm": -12.8
+            },
+            "moka_pot_1": {
+              "radial_mm": 720.6,
+              "dist3d_mm": 722.6,
+              "dz_mm": 54.1
+            },
+            "flat_stove_1": {
+              "radial_mm": 501.4,
+              "dist3d_mm": 501.4,
+              "dz_mm": -7.0
+            }
+          }
+        },
+        {
+          "init_index": 2,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 449.6,
+          "radial_max_mm": 707.0,
+          "dist3d_max_mm": 709.1,
+          "points": {
+            "eef_start": {
+              "radial_mm": 449.6,
+              "dist3d_mm": 520.3,
+              "dz_mm": 261.8
+            },
+            "chefmate_8_frypan_1": {
+              "radial_mm": 667.5,
+              "dist3d_mm": 667.6,
+              "dz_mm": -12.8
+            },
+            "moka_pot_1": {
+              "radial_mm": 707.0,
+              "dist3d_mm": 709.1,
+              "dz_mm": 54.1
+            },
+            "flat_stove_1": {
+              "radial_mm": 501.8,
+              "dist3d_mm": 501.9,
+              "dz_mm": -7.0
+            }
+          }
+        },
+        {
+          "init_index": 3,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 454.3,
+          "radial_max_mm": 712.0,
+          "dist3d_max_mm": 714.1,
+          "points": {
+            "eef_start": {
+              "radial_mm": 454.3,
+              "dist3d_mm": 526.6,
+              "dz_mm": 266.3
+            },
+            "chefmate_8_frypan_1": {
+              "radial_mm": 650.6,
+              "dist3d_mm": 650.7,
+              "dz_mm": -12.8
+            },
+            "moka_pot_1": {
+              "radial_mm": 712.0,
+              "dist3d_mm": 714.1,
+              "dz_mm": 54.1
+            },
+            "flat_stove_1": {
+              "radial_mm": 496.8,
+              "dist3d_mm": 496.9,
+              "dz_mm": -7.0
+            }
+          }
+        },
+        {
+          "init_index": 4,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 457.5,
+          "radial_max_mm": 690.3,
+          "dist3d_max_mm": 692.4,
+          "points": {
+            "eef_start": {
+              "radial_mm": 457.5,
+              "dist3d_mm": 527.7,
+              "dz_mm": 263.0
+            },
+            "chefmate_8_frypan_1": {
+              "radial_mm": 647.8,
+              "dist3d_mm": 647.9,
+              "dz_mm": -12.8
+            },
+            "moka_pot_1": {
+              "radial_mm": 690.3,
+              "dist3d_mm": 692.4,
+              "dz_mm": 54.1
+            },
+            "flat_stove_1": {
+              "radial_mm": 497.6,
+              "dist3d_mm": 497.6,
+              "dz_mm": -7.0
+            }
+          }
+        }
+      ],
+      "radial_max_mm": 720.6,
+      "radial_min_mm": 449.6,
+      "dist3d_max_mm": 722.6,
+      "arm_reach_max_mm": 300.0,
+      "scale_factor_needed": 2.4,
+      "fits": false
+    },
+    {
+      "task_index": 3,
+      "language": "put the black bowl in the bottom drawer of the cabinet and close it",
+      "inits": [
+        {
+          "init_index": 0,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 443.1,
+          "radial_max_mm": 719.1,
+          "dist3d_max_mm": 719.1,
+          "points": {
+            "eef_start": {
+              "radial_mm": 443.1,
+              "dist3d_mm": 512.8,
+              "dz_mm": 258.0
+            },
+            "akita_black_bowl_1": {
+              "radial_mm": 709.1,
+              "dist3d_mm": 709.2,
+              "dz_mm": -13.6
+            },
+            "wine_bottle_1": {
+              "radial_mm": 512.6,
+              "dist3d_mm": 512.8,
+              "dz_mm": -13.1
+            },
+            "white_cabinet_1": {
+              "radial_mm": 719.1,
+              "dist3d_mm": 719.1,
+              "dz_mm": -7.0
+            },
+            "wine_rack_1": {
+              "radial_mm": 637.4,
+              "dist3d_mm": 637.5,
+              "dz_mm": 8.0
+            }
+          }
+        },
+        {
+          "init_index": 1,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 447.4,
+          "radial_max_mm": 727.1,
+          "dist3d_max_mm": 727.2,
+          "points": {
+            "eef_start": {
+              "radial_mm": 447.4,
+              "dist3d_mm": 517.5,
+              "dz_mm": 260.1
+            },
+            "akita_black_bowl_1": {
+              "radial_mm": 677.3,
+              "dist3d_mm": 677.4,
+              "dz_mm": -13.6
+            },
+            "wine_bottle_1": {
+              "radial_mm": 492.3,
+              "dist3d_mm": 492.5,
+              "dz_mm": -13.1
+            },
+            "white_cabinet_1": {
+              "radial_mm": 727.1,
+              "dist3d_mm": 727.2,
+              "dz_mm": -7.0
+            },
+            "wine_rack_1": {
+              "radial_mm": 643.0,
+              "dist3d_mm": 643.0,
+              "dz_mm": 8.0
+            }
+          }
+        },
+        {
+          "init_index": 2,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 453.2,
+          "radial_max_mm": 715.9,
+          "dist3d_max_mm": 715.9,
+          "points": {
+            "eef_start": {
+              "radial_mm": 453.2,
+              "dist3d_mm": 525.8,
+              "dz_mm": 266.5
+            },
+            "akita_black_bowl_1": {
+              "radial_mm": 692.8,
+              "dist3d_mm": 692.9,
+              "dz_mm": -13.6
+            },
+            "wine_bottle_1": {
+              "radial_mm": 506.6,
+              "dist3d_mm": 506.8,
+              "dz_mm": -13.1
+            },
+            "white_cabinet_1": {
+              "radial_mm": 715.9,
+              "dist3d_mm": 715.9,
+              "dz_mm": -7.0
+            },
+            "wine_rack_1": {
+              "radial_mm": 644.8,
+              "dist3d_mm": 644.8,
+              "dz_mm": 8.0
+            }
+          }
+        },
+        {
+          "init_index": 3,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 456.7,
+          "radial_max_mm": 723.1,
+          "dist3d_max_mm": 723.1,
+          "points": {
+            "eef_start": {
+              "radial_mm": 456.7,
+              "dist3d_mm": 528.2,
+              "dz_mm": 265.2
+            },
+            "akita_black_bowl_1": {
+              "radial_mm": 692.5,
+              "dist3d_mm": 692.7,
+              "dz_mm": -13.6
+            },
+            "wine_bottle_1": {
+              "radial_mm": 512.6,
+              "dist3d_mm": 512.7,
+              "dz_mm": -13.1
+            },
+            "white_cabinet_1": {
+              "radial_mm": 723.1,
+              "dist3d_mm": 723.1,
+              "dz_mm": -7.0
+            },
+            "wine_rack_1": {
+              "radial_mm": 641.1,
+              "dist3d_mm": 641.1,
+              "dz_mm": 8.0
+            }
+          }
+        },
+        {
+          "init_index": 4,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 450.2,
+          "radial_max_mm": 729.1,
+          "dist3d_max_mm": 729.1,
+          "points": {
+            "eef_start": {
+              "radial_mm": 450.2,
+              "dist3d_mm": 527.6,
+              "dz_mm": 275.1
+            },
+            "akita_black_bowl_1": {
+              "radial_mm": 704.6,
+              "dist3d_mm": 704.7,
+              "dz_mm": -13.6
+            },
+            "wine_bottle_1": {
+              "radial_mm": 530.1,
+              "dist3d_mm": 530.3,
+              "dz_mm": -13.1
+            },
+            "white_cabinet_1": {
+              "radial_mm": 729.1,
+              "dist3d_mm": 729.1,
+              "dz_mm": -7.0
+            },
+            "wine_rack_1": {
+              "radial_mm": 638.6,
+              "dist3d_mm": 638.6,
+              "dz_mm": 8.0
+            }
+          }
+        }
+      ],
+      "radial_max_mm": 729.1,
+      "radial_min_mm": 443.1,
+      "dist3d_max_mm": 729.1,
+      "arm_reach_max_mm": 300.0,
+      "scale_factor_needed": 2.43,
+      "fits": false
+    },
+    {
+      "task_index": 4,
+      "language": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+      "inits": [
+        {
+          "init_index": 0,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 308.1,
+          "radial_max_mm": 601.9,
+          "dist3d_max_mm": 602.3,
+          "points": {
+            "eef_start": {
+              "radial_mm": 457.4,
+              "dist3d_mm": 529.6,
+              "dz_mm": 266.9
+            },
+            "porcelain_mug_1": {
+              "radial_mm": 450.4,
+              "dist3d_mm": 450.6,
+              "dz_mm": 14.4
+            },
+            "red_coffee_mug_1": {
+              "radial_mm": 308.1,
+              "dist3d_mm": 308.7,
+              "dz_mm": 18.6
+            },
+            "white_yellow_mug_1": {
+              "radial_mm": 488.7,
+              "dist3d_mm": 489.0,
+              "dz_mm": 16.9
+            },
+            "plate_1": {
+              "radial_mm": 600.0,
+              "dist3d_mm": 600.3,
+              "dz_mm": 19.3
+            },
+            "plate_2": {
+              "radial_mm": 601.9,
+              "dist3d_mm": 602.3,
+              "dz_mm": 19.3
+            }
+          }
+        },
+        {
+          "init_index": 1,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 333.9,
+          "radial_max_mm": 579.8,
+          "dist3d_max_mm": 580.1,
+          "points": {
+            "eef_start": {
+              "radial_mm": 449.5,
+              "dist3d_mm": 519.4,
+              "dz_mm": 260.1
+            },
+            "porcelain_mug_1": {
+              "radial_mm": 433.2,
+              "dist3d_mm": 433.4,
+              "dz_mm": 14.4
+            },
+            "red_coffee_mug_1": {
+              "radial_mm": 333.9,
+              "dist3d_mm": 334.4,
+              "dz_mm": 18.6
+            },
+            "white_yellow_mug_1": {
+              "radial_mm": 472.2,
+              "dist3d_mm": 472.5,
+              "dz_mm": 16.9
+            },
+            "plate_1": {
+              "radial_mm": 570.9,
+              "dist3d_mm": 571.2,
+              "dz_mm": 19.3
+            },
+            "plate_2": {
+              "radial_mm": 579.8,
+              "dist3d_mm": 580.1,
+              "dz_mm": 19.3
+            }
+          }
+        },
+        {
+          "init_index": 2,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 310.2,
+          "radial_max_mm": 594.5,
+          "dist3d_max_mm": 594.8,
+          "points": {
+            "eef_start": {
+              "radial_mm": 451.3,
+              "dist3d_mm": 515.5,
+              "dz_mm": 249.0
+            },
+            "porcelain_mug_1": {
+              "radial_mm": 425.0,
+              "dist3d_mm": 425.2,
+              "dz_mm": 14.4
+            },
+            "red_coffee_mug_1": {
+              "radial_mm": 310.2,
+              "dist3d_mm": 310.7,
+              "dz_mm": 18.6
+            },
+            "white_yellow_mug_1": {
+              "radial_mm": 454.8,
+              "dist3d_mm": 455.1,
+              "dz_mm": 16.9
+            },
+            "plate_1": {
+              "radial_mm": 594.5,
+              "dist3d_mm": 594.8,
+              "dz_mm": 19.3
+            },
+            "plate_2": {
+              "radial_mm": 563.4,
+              "dist3d_mm": 563.7,
+              "dz_mm": 19.3
+            }
+          }
+        },
+        {
+          "init_index": 3,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 296.1,
+          "radial_max_mm": 603.9,
+          "dist3d_max_mm": 604.2,
+          "points": {
+            "eef_start": {
+              "radial_mm": 445.8,
+              "dist3d_mm": 515.0,
+              "dz_mm": 257.8
+            },
+            "porcelain_mug_1": {
+              "radial_mm": 447.4,
+              "dist3d_mm": 447.7,
+              "dz_mm": 14.4
+            },
+            "red_coffee_mug_1": {
+              "radial_mm": 296.1,
+              "dist3d_mm": 296.7,
+              "dz_mm": 18.6
+            },
+            "white_yellow_mug_1": {
+              "radial_mm": 482.3,
+              "dist3d_mm": 482.6,
+              "dz_mm": 16.9
+            },
+            "plate_1": {
+              "radial_mm": 603.9,
+              "dist3d_mm": 604.2,
+              "dz_mm": 19.3
+            },
+            "plate_2": {
+              "radial_mm": 584.2,
+              "dist3d_mm": 584.5,
+              "dz_mm": 19.3
+            }
+          }
+        },
+        {
+          "init_index": 4,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 324.0,
+          "radial_max_mm": 580.1,
+          "dist3d_max_mm": 580.4,
+          "points": {
+            "eef_start": {
+              "radial_mm": 447.0,
+              "dist3d_mm": 516.2,
+              "dz_mm": 258.2
+            },
+            "porcelain_mug_1": {
+              "radial_mm": 436.2,
+              "dist3d_mm": 436.4,
+              "dz_mm": 14.4
+            },
+            "red_coffee_mug_1": {
+              "radial_mm": 324.0,
+              "dist3d_mm": 324.5,
+              "dz_mm": 18.6
+            },
+            "white_yellow_mug_1": {
+              "radial_mm": 485.8,
+              "dist3d_mm": 486.1,
+              "dz_mm": 16.9
+            },
+            "plate_1": {
+              "radial_mm": 580.1,
+              "dist3d_mm": 580.4,
+              "dz_mm": 19.3
+            },
+            "plate_2": {
+              "radial_mm": 578.8,
+              "dist3d_mm": 579.2,
+              "dz_mm": 19.3
+            }
+          }
+        }
+      ],
+      "radial_max_mm": 603.9,
+      "radial_min_mm": 296.1,
+      "dist3d_max_mm": 604.2,
+      "arm_reach_max_mm": 300.0,
+      "scale_factor_needed": 2.01,
+      "fits": false
+    },
+    {
+      "task_index": 5,
+      "language": "pick up the book and place it in the back compartment of the caddy",
+      "inits": [
+        {
+          "init_index": 0,
+          "base_xyz": [
+            -0.75,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 386.4,
+          "radial_max_mm": 634.8,
+          "dist3d_max_mm": 635.4,
+          "points": {
+            "eef_start": {
+              "radial_mm": 452.8,
+              "dist3d_mm": 523.2,
+              "dz_mm": 262.2
+            },
+            "black_book_1": {
+              "radial_mm": 564.1,
+              "dist3d_mm": 564.9,
+              "dz_mm": -29.0
+            },
+            "white_yellow_mug_1": {
+              "radial_mm": 634.8,
+              "dist3d_mm": 635.4,
+              "dz_mm": -26.8
+            },
+            "desk_caddy_1": {
+              "radial_mm": 386.4,
+              "dist3d_mm": 387.2,
+              "dz_mm": -25.0
+            }
+          }
+        },
+        {
+          "init_index": 1,
+          "base_xyz": [
+            -0.75,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 382.2,
+          "radial_max_mm": 673.9,
+          "dist3d_max_mm": 674.4,
+          "points": {
+            "eef_start": {
+              "radial_mm": 448.1,
+              "dist3d_mm": 522.2,
+              "dz_mm": 268.1
+            },
+            "black_book_1": {
+              "radial_mm": 582.1,
+              "dist3d_mm": 582.8,
+              "dz_mm": -29.0
+            },
+            "white_yellow_mug_1": {
+              "radial_mm": 673.9,
+              "dist3d_mm": 674.4,
+              "dz_mm": -26.8
+            },
+            "desk_caddy_1": {
+              "radial_mm": 382.2,
+              "dist3d_mm": 383.1,
+              "dz_mm": -25.0
+            }
+          }
+        },
+        {
+          "init_index": 2,
+          "base_xyz": [
+            -0.75,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 384.0,
+          "radial_max_mm": 642.7,
+          "dist3d_max_mm": 643.2,
+          "points": {
+            "eef_start": {
+              "radial_mm": 443.5,
+              "dist3d_mm": 507.6,
+              "dz_mm": 246.9
+            },
+            "black_book_1": {
+              "radial_mm": 575.9,
+              "dist3d_mm": 576.7,
+              "dz_mm": -29.0
+            },
+            "white_yellow_mug_1": {
+              "radial_mm": 642.7,
+              "dist3d_mm": 643.2,
+              "dz_mm": -26.8
+            },
+            "desk_caddy_1": {
+              "radial_mm": 384.0,
+              "dist3d_mm": 384.8,
+              "dz_mm": -25.0
+            }
+          }
+        },
+        {
+          "init_index": 3,
+          "base_xyz": [
+            -0.75,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 372.6,
+          "radial_max_mm": 648.8,
+          "dist3d_max_mm": 649.3,
+          "points": {
+            "eef_start": {
+              "radial_mm": 443.6,
+              "dist3d_mm": 513.7,
+              "dz_mm": 259.0
+            },
+            "black_book_1": {
+              "radial_mm": 545.2,
+              "dist3d_mm": 546.0,
+              "dz_mm": -29.0
+            },
+            "white_yellow_mug_1": {
+              "radial_mm": 648.8,
+              "dist3d_mm": 649.3,
+              "dz_mm": -26.8
+            },
+            "desk_caddy_1": {
+              "radial_mm": 372.6,
+              "dist3d_mm": 373.5,
+              "dz_mm": -25.0
+            }
+          }
+        },
+        {
+          "init_index": 4,
+          "base_xyz": [
+            -0.75,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 374.2,
+          "radial_max_mm": 628.8,
+          "dist3d_max_mm": 629.4,
+          "points": {
+            "eef_start": {
+              "radial_mm": 448.3,
+              "dist3d_mm": 515.4,
+              "dz_mm": 254.3
+            },
+            "black_book_1": {
+              "radial_mm": 570.6,
+              "dist3d_mm": 571.4,
+              "dz_mm": -29.0
+            },
+            "white_yellow_mug_1": {
+              "radial_mm": 628.8,
+              "dist3d_mm": 629.4,
+              "dz_mm": -26.8
+            },
+            "desk_caddy_1": {
+              "radial_mm": 374.2,
+              "dist3d_mm": 375.1,
+              "dz_mm": -25.0
+            }
+          }
+        }
+      ],
+      "radial_max_mm": 673.9,
+      "radial_min_mm": 372.6,
+      "dist3d_max_mm": 674.4,
+      "arm_reach_max_mm": 300.0,
+      "scale_factor_needed": 2.25,
+      "fits": false
+    },
+    {
+      "task_index": 6,
+      "language": "put the white mug on the plate and put the chocolate pudding to the right of the plate",
+      "inits": [
+        {
+          "init_index": 0,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 290.1,
+          "radial_max_mm": 659.1,
+          "dist3d_max_mm": 659.3,
+          "points": {
+            "eef_start": {
+              "radial_mm": 456.2,
+              "dist3d_mm": 533.2,
+              "dz_mm": 276.0
+            },
+            "porcelain_mug_1": {
+              "radial_mm": 437.6,
+              "dist3d_mm": 437.9,
+              "dz_mm": 14.4
+            },
+            "red_coffee_mug_1": {
+              "radial_mm": 290.1,
+              "dist3d_mm": 290.7,
+              "dz_mm": 18.6
+            },
+            "plate_1": {
+              "radial_mm": 659.1,
+              "dist3d_mm": 659.3,
+              "dz_mm": 19.3
+            },
+            "chocolate_pudding_1": {
+              "radial_mm": 484.7,
+              "dist3d_mm": 485.6,
+              "dz_mm": 29.8
+            }
+          }
+        },
+        {
+          "init_index": 1,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 333.2,
+          "radial_max_mm": 682.9,
+          "dist3d_max_mm": 683.2,
+          "points": {
+            "eef_start": {
+              "radial_mm": 448.1,
+              "dist3d_mm": 516.6,
+              "dz_mm": 257.0
+            },
+            "porcelain_mug_1": {
+              "radial_mm": 445.0,
+              "dist3d_mm": 445.2,
+              "dz_mm": 14.4
+            },
+            "red_coffee_mug_1": {
+              "radial_mm": 333.2,
+              "dist3d_mm": 333.7,
+              "dz_mm": 18.6
+            },
+            "plate_1": {
+              "radial_mm": 682.9,
+              "dist3d_mm": 683.2,
+              "dz_mm": 19.3
+            },
+            "chocolate_pudding_1": {
+              "radial_mm": 487.1,
+              "dist3d_mm": 488.1,
+              "dz_mm": 29.8
+            }
+          }
+        },
+        {
+          "init_index": 2,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 296.8,
+          "radial_max_mm": 680.1,
+          "dist3d_max_mm": 680.4,
+          "points": {
+            "eef_start": {
+              "radial_mm": 453.4,
+              "dist3d_mm": 524.7,
+              "dz_mm": 264.1
+            },
+            "porcelain_mug_1": {
+              "radial_mm": 425.1,
+              "dist3d_mm": 425.4,
+              "dz_mm": 14.4
+            },
+            "red_coffee_mug_1": {
+              "radial_mm": 296.8,
+              "dist3d_mm": 297.4,
+              "dz_mm": 18.6
+            },
+            "plate_1": {
+              "radial_mm": 680.1,
+              "dist3d_mm": 680.4,
+              "dz_mm": 19.3
+            },
+            "chocolate_pudding_1": {
+              "radial_mm": 461.4,
+              "dist3d_mm": 462.4,
+              "dz_mm": 29.8
+            }
+          }
+        },
+        {
+          "init_index": 3,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 328.9,
+          "radial_max_mm": 668.8,
+          "dist3d_max_mm": 669.0,
+          "points": {
+            "eef_start": {
+              "radial_mm": 452.6,
+              "dist3d_mm": 520.7,
+              "dz_mm": 257.5
+            },
+            "porcelain_mug_1": {
+              "radial_mm": 432.1,
+              "dist3d_mm": 432.3,
+              "dz_mm": 14.4
+            },
+            "red_coffee_mug_1": {
+              "radial_mm": 328.9,
+              "dist3d_mm": 329.4,
+              "dz_mm": 18.6
+            },
+            "plate_1": {
+              "radial_mm": 668.8,
+              "dist3d_mm": 669.0,
+              "dz_mm": 19.3
+            },
+            "chocolate_pudding_1": {
+              "radial_mm": 468.2,
+              "dist3d_mm": 469.2,
+              "dz_mm": 29.8
+            }
+          }
+        },
+        {
+          "init_index": 4,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 317.2,
+          "radial_max_mm": 643.3,
+          "dist3d_max_mm": 643.6,
+          "points": {
+            "eef_start": {
+              "radial_mm": 448.4,
+              "dist3d_mm": 516.0,
+              "dz_mm": 255.4
+            },
+            "porcelain_mug_1": {
+              "radial_mm": 415.1,
+              "dist3d_mm": 415.3,
+              "dz_mm": 14.4
+            },
+            "red_coffee_mug_1": {
+              "radial_mm": 317.2,
+              "dist3d_mm": 317.7,
+              "dz_mm": 18.6
+            },
+            "plate_1": {
+              "radial_mm": 643.3,
+              "dist3d_mm": 643.6,
+              "dz_mm": 19.3
+            },
+            "chocolate_pudding_1": {
+              "radial_mm": 451.2,
+              "dist3d_mm": 452.2,
+              "dz_mm": 29.8
+            }
+          }
+        }
+      ],
+      "radial_max_mm": 682.9,
+      "radial_min_mm": 290.1,
+      "dist3d_max_mm": 683.2,
+      "arm_reach_max_mm": 300.0,
+      "scale_factor_needed": 2.28,
+      "fits": false
+    },
+    {
+      "task_index": 7,
+      "language": "put both the alphabet soup and the cream cheese box in the basket",
+      "inits": [
+        {
+          "init_index": 0,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 350.0,
+          "radial_max_mm": 642.1,
+          "dist3d_max_mm": 644.4,
+          "points": {
+            "eef_start": {
+              "radial_mm": 445.0,
+              "dist3d_mm": 509.5,
+              "dz_mm": 248.3
+            },
+            "alphabet_soup_1": {
+              "radial_mm": 560.6,
+              "dist3d_mm": 563.3,
+              "dz_mm": 55.2
+            },
+            "cream_cheese_1": {
+              "radial_mm": 372.5,
+              "dist3d_mm": 373.4,
+              "dz_mm": 25.7
+            },
+            "tomato_sauce_1": {
+              "radial_mm": 642.1,
+              "dist3d_mm": 644.4,
+              "dz_mm": 55.2
+            },
+            "ketchup_1": {
+              "radial_mm": 350.0,
+              "dist3d_mm": 361.2,
+              "dz_mm": 89.2
+            },
+            "basket_1": {
+              "radial_mm": 575.2,
+              "dist3d_mm": 575.4,
+              "dz_mm": 12.2
+            }
+          }
+        },
+        {
+          "init_index": 1,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 326.4,
+          "radial_max_mm": 645.5,
+          "dist3d_max_mm": 647.8,
+          "points": {
+            "eef_start": {
+              "radial_mm": 452.9,
+              "dist3d_mm": 521.2,
+              "dz_mm": 257.9
+            },
+            "alphabet_soup_1": {
+              "radial_mm": 588.2,
+              "dist3d_mm": 590.8,
+              "dz_mm": 55.2
+            },
+            "cream_cheese_1": {
+              "radial_mm": 344.4,
+              "dist3d_mm": 345.3,
+              "dz_mm": 25.7
+            },
+            "tomato_sauce_1": {
+              "radial_mm": 645.5,
+              "dist3d_mm": 647.8,
+              "dz_mm": 55.2
+            },
+            "ketchup_1": {
+              "radial_mm": 326.4,
+              "dist3d_mm": 338.3,
+              "dz_mm": 89.2
+            },
+            "basket_1": {
+              "radial_mm": 565.1,
+              "dist3d_mm": 565.3,
+              "dz_mm": 12.2
+            }
+          }
+        },
+        {
+          "init_index": 2,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 340.4,
+          "radial_max_mm": 658.9,
+          "dist3d_max_mm": 661.2,
+          "points": {
+            "eef_start": {
+              "radial_mm": 461.4,
+              "dist3d_mm": 534.6,
+              "dz_mm": 269.8
+            },
+            "alphabet_soup_1": {
+              "radial_mm": 582.5,
+              "dist3d_mm": 585.1,
+              "dz_mm": 55.2
+            },
+            "cream_cheese_1": {
+              "radial_mm": 371.2,
+              "dist3d_mm": 372.0,
+              "dz_mm": 25.7
+            },
+            "tomato_sauce_1": {
+              "radial_mm": 658.9,
+              "dist3d_mm": 661.2,
+              "dz_mm": 55.2
+            },
+            "ketchup_1": {
+              "radial_mm": 340.4,
+              "dist3d_mm": 351.9,
+              "dz_mm": 89.2
+            },
+            "basket_1": {
+              "radial_mm": 574.3,
+              "dist3d_mm": 574.4,
+              "dz_mm": 12.2
+            }
+          }
+        },
+        {
+          "init_index": 3,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 328.0,
+          "radial_max_mm": 625.0,
+          "dist3d_max_mm": 627.4,
+          "points": {
+            "eef_start": {
+              "radial_mm": 445.6,
+              "dist3d_mm": 513.5,
+              "dz_mm": 255.3
+            },
+            "alphabet_soup_1": {
+              "radial_mm": 586.7,
+              "dist3d_mm": 589.3,
+              "dz_mm": 55.2
+            },
+            "cream_cheese_1": {
+              "radial_mm": 346.8,
+              "dist3d_mm": 347.7,
+              "dz_mm": 25.7
+            },
+            "tomato_sauce_1": {
+              "radial_mm": 625.0,
+              "dist3d_mm": 627.4,
+              "dz_mm": 55.2
+            },
+            "ketchup_1": {
+              "radial_mm": 328.0,
+              "dist3d_mm": 339.9,
+              "dz_mm": 89.2
+            },
+            "basket_1": {
+              "radial_mm": 571.7,
+              "dist3d_mm": 571.9,
+              "dz_mm": 12.2
+            }
+          }
+        },
+        {
+          "init_index": 4,
+          "base_xyz": [
+            -0.51,
+            0.0,
+            0.42
+          ],
+          "radial_min_mm": 350.0,
+          "radial_max_mm": 648.1,
+          "dist3d_max_mm": 650.5,
+          "points": {
+            "eef_start": {
+              "radial_mm": 450.3,
+              "dist3d_mm": 523.9,
+              "dz_mm": 267.8
+            },
+            "alphabet_soup_1": {
+              "radial_mm": 592.0,
+              "dist3d_mm": 594.5,
+              "dz_mm": 55.2
+            },
+            "cream_cheese_1": {
+              "radial_mm": 356.6,
+              "dist3d_mm": 357.5,
+              "dz_mm": 25.7
+            },
+            "tomato_sauce_1": {
+              "radial_mm": 648.1,
+              "dist3d_mm": 650.5,
+              "dz_mm": 55.2
+            },
+            "ketchup_1": {
+              "radial_mm": 350.0,
+              "dist3d_mm": 361.2,
+              "dz_mm": 89.2
+            },
+            "basket_1": {
+              "radial_mm": 575.1,
+              "dist3d_mm": 575.2,
+              "dz_mm": 12.2
+            }
+          }
+        }
+      ],
+      "radial_max_mm": 658.9,
+      "radial_min_mm": 326.4,
+      "dist3d_max_mm": 661.2,
+      "arm_reach_max_mm": 300.0,
+      "scale_factor_needed": 2.2,
+      "fits": false
+    },
+    {
+      "task_index": 8,
+      "language": "put both moka pots on the stove",
+      "inits": [
+        {
+          "init_index": 0,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 457.1,
+          "radial_max_mm": 702.7,
+          "dist3d_max_mm": 704.8,
+          "points": {
+            "eef_start": {
+              "radial_mm": 457.1,
+              "dist3d_mm": 530.6,
+              "dz_mm": 269.4
+            },
+            "moka_pot_1": {
+              "radial_mm": 658.3,
+              "dist3d_mm": 660.5,
+              "dz_mm": 54.1
+            },
+            "moka_pot_2": {
+              "radial_mm": 702.7,
+              "dist3d_mm": 704.8,
+              "dz_mm": 54.1
+            },
+            "flat_stove_1": {
+              "radial_mm": 506.7,
+              "dist3d_mm": 506.8,
+              "dz_mm": -7.0
+            }
+          }
+        },
+        {
+          "init_index": 1,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 458.3,
+          "radial_max_mm": 694.9,
+          "dist3d_max_mm": 697.0,
+          "points": {
+            "eef_start": {
+              "radial_mm": 458.3,
+              "dist3d_mm": 533.8,
+              "dz_mm": 273.6
+            },
+            "moka_pot_1": {
+              "radial_mm": 671.0,
+              "dist3d_mm": 673.1,
+              "dz_mm": 54.1
+            },
+            "moka_pot_2": {
+              "radial_mm": 694.9,
+              "dist3d_mm": 697.0,
+              "dz_mm": 54.1
+            },
+            "flat_stove_1": {
+              "radial_mm": 495.1,
+              "dist3d_mm": 495.2,
+              "dz_mm": -7.0
+            }
+          }
+        },
+        {
+          "init_index": 2,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 450.1,
+          "radial_max_mm": 701.7,
+          "dist3d_max_mm": 703.8,
+          "points": {
+            "eef_start": {
+              "radial_mm": 450.1,
+              "dist3d_mm": 520.1,
+              "dz_mm": 260.6
+            },
+            "moka_pot_1": {
+              "radial_mm": 672.8,
+              "dist3d_mm": 675.0,
+              "dz_mm": 54.1
+            },
+            "moka_pot_2": {
+              "radial_mm": 701.7,
+              "dist3d_mm": 703.8,
+              "dz_mm": 54.1
+            },
+            "flat_stove_1": {
+              "radial_mm": 496.6,
+              "dist3d_mm": 496.7,
+              "dz_mm": -7.0
+            }
+          }
+        },
+        {
+          "init_index": 3,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 447.3,
+          "radial_max_mm": 701.1,
+          "dist3d_max_mm": 703.2,
+          "points": {
+            "eef_start": {
+              "radial_mm": 447.3,
+              "dist3d_mm": 514.5,
+              "dz_mm": 254.3
+            },
+            "moka_pot_1": {
+              "radial_mm": 676.4,
+              "dist3d_mm": 678.6,
+              "dz_mm": 54.1
+            },
+            "moka_pot_2": {
+              "radial_mm": 701.1,
+              "dist3d_mm": 703.2,
+              "dz_mm": 54.1
+            },
+            "flat_stove_1": {
+              "radial_mm": 496.3,
+              "dist3d_mm": 496.4,
+              "dz_mm": -7.0
+            }
+          }
+        },
+        {
+          "init_index": 4,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 461.2,
+          "radial_max_mm": 717.8,
+          "dist3d_max_mm": 719.8,
+          "points": {
+            "eef_start": {
+              "radial_mm": 461.2,
+              "dist3d_mm": 531.5,
+              "dz_mm": 264.2
+            },
+            "moka_pot_1": {
+              "radial_mm": 670.7,
+              "dist3d_mm": 672.9,
+              "dz_mm": 54.1
+            },
+            "moka_pot_2": {
+              "radial_mm": 717.8,
+              "dist3d_mm": 719.8,
+              "dz_mm": 54.1
+            },
+            "flat_stove_1": {
+              "radial_mm": 506.7,
+              "dist3d_mm": 506.7,
+              "dz_mm": -7.0
+            }
+          }
+        }
+      ],
+      "radial_max_mm": 717.8,
+      "radial_min_mm": 447.3,
+      "dist3d_max_mm": 719.8,
+      "arm_reach_max_mm": 300.0,
+      "scale_factor_needed": 2.39,
+      "fits": false
+    },
+    {
+      "task_index": 9,
+      "language": "put the yellow and white mug in the microwave and close it",
+      "inits": [
+        {
+          "init_index": 0,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 450.4,
+          "radial_max_mm": 741.8,
+          "dist3d_max_mm": 741.8,
+          "points": {
+            "eef_start": {
+              "radial_mm": 450.4,
+              "dist3d_mm": 517.1,
+              "dz_mm": 254.0
+            },
+            "porcelain_mug_1": {
+              "radial_mm": 592.4,
+              "dist3d_mm": 592.6,
+              "dz_mm": -14.4
+            },
+            "white_yellow_mug_1": {
+              "radial_mm": 640.7,
+              "dist3d_mm": 640.8,
+              "dz_mm": -11.9
+            },
+            "microwave_1": {
+              "radial_mm": 741.8,
+              "dist3d_mm": 741.8,
+              "dz_mm": 8.0
+            }
+          }
+        },
+        {
+          "init_index": 1,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 445.4,
+          "radial_max_mm": 750.1,
+          "dist3d_max_mm": 750.2,
+          "points": {
+            "eef_start": {
+              "radial_mm": 445.4,
+              "dist3d_mm": 512.2,
+              "dz_mm": 252.8
+            },
+            "porcelain_mug_1": {
+              "radial_mm": 602.1,
+              "dist3d_mm": 602.3,
+              "dz_mm": -14.4
+            },
+            "white_yellow_mug_1": {
+              "radial_mm": 679.1,
+              "dist3d_mm": 679.2,
+              "dz_mm": -11.9
+            },
+            "microwave_1": {
+              "radial_mm": 750.1,
+              "dist3d_mm": 750.2,
+              "dz_mm": 8.0
+            }
+          }
+        },
+        {
+          "init_index": 2,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 449.2,
+          "radial_max_mm": 742.4,
+          "dist3d_max_mm": 742.4,
+          "points": {
+            "eef_start": {
+              "radial_mm": 449.2,
+              "dist3d_mm": 519.5,
+              "dz_mm": 260.9
+            },
+            "porcelain_mug_1": {
+              "radial_mm": 594.1,
+              "dist3d_mm": 594.3,
+              "dz_mm": -14.4
+            },
+            "white_yellow_mug_1": {
+              "radial_mm": 643.1,
+              "dist3d_mm": 643.2,
+              "dz_mm": -11.9
+            },
+            "microwave_1": {
+              "radial_mm": 742.4,
+              "dist3d_mm": 742.4,
+              "dz_mm": 8.0
+            }
+          }
+        },
+        {
+          "init_index": 3,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 453.7,
+          "radial_max_mm": 751.1,
+          "dist3d_max_mm": 751.1,
+          "points": {
+            "eef_start": {
+              "radial_mm": 453.7,
+              "dist3d_mm": 528.0,
+              "dz_mm": 270.1
+            },
+            "porcelain_mug_1": {
+              "radial_mm": 588.9,
+              "dist3d_mm": 589.1,
+              "dz_mm": -14.4
+            },
+            "white_yellow_mug_1": {
+              "radial_mm": 641.9,
+              "dist3d_mm": 642.0,
+              "dz_mm": -11.9
+            },
+            "microwave_1": {
+              "radial_mm": 751.1,
+              "dist3d_mm": 751.1,
+              "dz_mm": 8.0
+            }
+          }
+        },
+        {
+          "init_index": 4,
+          "base_xyz": [
+            -0.66,
+            0.0,
+            0.912
+          ],
+          "radial_min_mm": 456.1,
+          "radial_max_mm": 749.4,
+          "dist3d_max_mm": 749.4,
+          "points": {
+            "eef_start": {
+              "radial_mm": 456.1,
+              "dist3d_mm": 524.3,
+              "dz_mm": 258.4
+            },
+            "porcelain_mug_1": {
+              "radial_mm": 624.9,
+              "dist3d_mm": 625.1,
+              "dz_mm": -14.4
+            },
+            "white_yellow_mug_1": {
+              "radial_mm": 681.2,
+              "dist3d_mm": 681.3,
+              "dz_mm": -11.9
+            },
+            "microwave_1": {
+              "radial_mm": 749.4,
+              "dist3d_mm": 749.4,
+              "dz_mm": 8.0
+            }
+          }
+        }
+      ],
+      "radial_max_mm": 751.1,
+      "radial_min_mm": 445.4,
+      "dist3d_max_mm": 751.1,
+      "arm_reach_max_mm": 300.0,
+      "scale_factor_needed": 2.5,
+      "fits": false
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "arm_spec_status": "assumed",
+  "arm_spec_digest": "44edf40302b6",
+  "controller_scaling": {
+    "output_max_pos_m": 0.05,
+    "output_max_rot_rad": 0.5
+  },
+  "checks": [
+    {
+      "check": "none is an action identity",
+      "pass": true,
+      "detail": "5 steps returned unchanged"
+    },
+    {
+      "check": "none is a state identity",
+      "pass": true,
+      "detail": "ground truth passed through"
+    },
+    {
+      "check": "quantizer discretizes",
+      "pass": true,
+      "detail": "2 output levels [np.float64(0.0), np.float64(0.046019)], quantum 2.301 mm vs 1.0 mm requested per step"
+    },
+    {
+      "check": "quantizer conserves travel",
+      "pass": true,
+      "detail": "realized 20.71 mm vs requested 20.00 mm (within one quantum)"
+    },
+    {
+      "check": "faster PWM frame rate is finer",
+      "pass": true,
+      "detail": "50 Hz -> 2.301 mm, 330 Hz -> 0.349 mm"
+    },
+    {
+      "check": "rotation quantizer does not reverse direction at 50 Hz",
+      "pass": true,
+      "detail": "0/60 steps opposed the commanded rotation"
+    },
+    {
+      "check": "rotation quantizer does not reverse direction at 200 Hz",
+      "pass": true,
+      "detail": "0/60 steps opposed the commanded rotation"
+    },
+    {
+      "check": "rotation error falls with a finer quantum",
+      "pass": true,
+      "detail": "median error/signal 0.186 at 50 Hz -> 0.017 at 200 Hz"
+    },
+    {
+      "check": "rotation error is smaller than the signal at 200 Hz",
+      "pass": true,
+      "detail": "median error/signal 0.017"
+    },
+    {
+      "check": "sub-quantum rotation accumulates rather than vanishing",
+      "pass": true,
+      "detail": "requested 4.00 deg in 0.02 deg steps, realized 3.96 deg (within one 0.439 deg count)"
+    },
+    {
+      "check": "impossible frame rate rejected",
+      "pass": true,
+      "detail": "frame_rate_hz=450.0 gives a 2222 us period"
+    },
+    {
+      "check": "dof5 removes only world-z rotation",
+      "pass": true,
+      "detail": "rot [ 0.1 -0.2  0.3] -> [ 0.1 -0.2  0. ], translation untouched"
+    },
+    {
+      "check": "dead reckoning integrates commands",
+      "pass": true,
+      "detail": "after 10 x 5 mm, estimate x=0.0500 (truth 0.0000)"
+    },
+    {
+      "check": "dead reckoning ignores truth",
+      "pass": true,
+      "detail": "estimate unchanged when a different truth is supplied"
+    },
+    {
+      "check": "dead-reckoned gripper tracks the command",
+      "pass": true,
+      "detail": "gripper action -1 (open) -> qpos [ 0.0399 -0.0399]"
+    },
+    {
+      "check": "state-const returns the dataset mean",
+      "pass": true,
+      "detail": "policy is told nothing, whatever the true state is"
+    },
+    {
+      "check": "slew caps per-tick rotation",
+      "pass": true,
+      "detail": "requested 5.0 action units, cap 1.309, clipped 4/4 steps"
+    }
+  ],
+  "passed": 17,
+  "total": 17,
+  "pass": true
+}

@@ -1,0 +1,15 @@
+{
+  "backend_extensions": {
+    "shared_library_path": "libQnnHtpNetRunExtensions.so",
+    "config_file_path": "/home/ubuntu/QRB-ROS-VLA/bench/pi05/cfg_htp_maxperf.json"
+  },
+  "context_configs": {
+    "context_priority": "critical",
+    "async_execute_queue_depth": 4,
+    "is_persistent_binary": true,
+    "cache_compatibility_mode": "permissive"
+  },
+  "profile_configs": {
+    "num_max_events": 4096
+  }
+}

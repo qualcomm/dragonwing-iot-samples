@@ -1,0 +1,71 @@
+plan=init graphs=['backbone', 'token_emb'] conds=8 repeats=3 runs=48 -> results_init.jsonl
+[1/48] r0 backbone        i_base           min=397.597 avg=398.72 init=558.885 load=1.17
+[2/48] r0 backbone        i_skipval        min=397.946 avg=399.212 init=564.795 load=1.16
+[3/48] r0 backbone        i_accel          min=398.107 avg=399.003 init=560.676 load=1.16
+[4/48] r0 backbone        i_budget         min=397.764 avg=398.48 init=606.496 load=1.22
+[5/48] r0 backbone        i_ioest          min=397.576 avg=398.522 init=568.199 load=1.21
+[6/48] r0 backbone        i_udma           min=397.38 avg=397.896 init=561.996 load=1.27
+[7/48] r0 backbone        i_detach         min=None avg=None init=0.0 load=1.33  <-- NPU NOT CONFIRMED
+[8/48] r0 backbone        i_all            min=398.084 avg=398.682 init=615.499 load=1.33
+[9/48] r0 token_emb       i_base           min=2.926 avg=3.171 init=162.191 load=1.38
+[10/48] r0 token_emb       i_skipval        min=2.981 avg=3.18 init=159.381 load=1.38
+[11/48] r0 token_emb       i_accel          min=2.964 avg=3.219 init=172.908 load=1.38
+[12/48] r0 token_emb       i_budget         min=3.096 avg=3.313 init=213.553 load=1.51
+[13/48] r0 token_emb       i_ioest          min=3.067 avg=3.307 init=178.566 load=1.51
+[14/48] r0 token_emb       i_udma           min=3.064 avg=3.324 init=188.139 load=1.51
+[15/48] r0 token_emb       i_detach         min=None avg=None init=0.0 load=1.51  <-- NPU NOT CONFIRMED
+[16/48] r0 token_emb       i_all            min=3.039 avg=3.275 init=219.115 load=1.71
+[17/48] r1 backbone        i_skipval        min=397.946 avg=399.212 init=564.795 load=1.71
+[18/48] r1 backbone        i_accel          min=398.107 avg=399.003 init=560.676 load=1.66
+[19/48] r1 backbone        i_budget         min=397.764 avg=398.48 init=606.496 load=1.66
+[20/48] r1 backbone        i_ioest          min=397.576 avg=398.522 init=568.199 load=1.68
+[21/48] r1 backbone        i_udma           min=397.38 avg=397.896 init=561.996 load=1.71
+[22/48] r1 backbone        i_detach         min=None avg=None init=0.0 load=1.81  <-- NPU NOT CONFIRMED
+[23/48] r1 backbone        i_all            min=398.084 avg=398.682 init=615.499 load=1.81
+[24/48] r1 backbone        i_base           min=397.597 avg=398.72 init=558.885 load=1.83
+[25/48] r1 token_emb       i_skipval        min=2.981 avg=3.18 init=159.381 load=1.76
+[26/48] r1 token_emb       i_accel          min=2.964 avg=3.219 init=172.908 load=1.76
+[27/48] r1 token_emb       i_budget         min=3.096 avg=3.313 init=213.553 load=1.76
+[28/48] r1 token_emb       i_ioest          min=3.067 avg=3.307 init=178.566 load=1.78
+[29/48] r1 token_emb       i_udma           min=3.064 avg=3.324 init=188.139 load=1.78
+[30/48] r1 token_emb       i_detach         min=None avg=None init=0.0 load=1.78  <-- NPU NOT CONFIRMED
+[31/48] r1 token_emb       i_all            min=3.039 avg=3.275 init=219.115 load=1.78
+[32/48] r1 token_emb       i_base           min=2.926 avg=3.171 init=162.191 load=1.72
+[33/48] r2 backbone        i_accel          min=398.107 avg=399.003 init=560.676 load=1.72
+[34/48] r2 backbone        i_budget         min=397.764 avg=398.48 init=606.496 load=1.58
+[35/48] r2 backbone        i_ioest          min=397.576 avg=398.522 init=568.199 load=1.58
+[36/48] r2 backbone        i_udma           min=397.38 avg=397.896 init=561.996 load=1.61
+[37/48] r2 backbone        i_detach         min=None avg=None init=0.0 load=1.81  <-- NPU NOT CONFIRMED
+[38/48] r2 backbone        i_all            min=398.084 avg=398.682 init=615.499 load=1.81
+[39/48] r2 backbone        i_base           min=397.597 avg=398.72 init=558.885 load=1.66
+[40/48] r2 backbone        i_skipval        min=397.946 avg=399.212 init=564.795 load=1.53
+[41/48] r2 token_emb       i_accel          min=2.964 avg=3.219 init=172.908 load=1.4
+[42/48] r2 token_emb       i_budget         min=3.096 avg=3.313 init=213.553 load=1.4
+[43/48] r2 token_emb       i_ioest          min=3.067 avg=3.307 init=178.566 load=1.37
+[44/48] r2 token_emb       i_udma           min=3.064 avg=3.324 init=188.139 load=1.37
+[45/48] r2 token_emb       i_detach         min=None avg=None init=0.0 load=1.37  <-- NPU NOT CONFIRMED
+[46/48] r2 token_emb       i_all            min=3.039 avg=3.275 init=219.115 load=1.37
+[47/48] r2 token_emb       i_base           min=2.926 avg=3.171 init=162.191 load=1.42
+[48/48] r2 token_emb       i_skipval        min=2.981 avg=3.18 init=159.381 load=1.42
+
+=== summary: results_init.jsonl (primary statistic = min over inferences, best over repeats) ===
+
+-- backbone --   (reference: i_base = 397.60 ms)
+   cond                best_min   med_min     init   vs_ref  npu  desc
+   i_udma                397.38    397.38    562.0    1.00x  ok   extended_udma
+   i_ioest               397.58    397.58    568.2    1.00x  ok   io_memory_estimation
+   i_base                397.60    397.60    558.9    1.00x  ok   init reference (devices block only)
+   i_budget              397.76    397.76    606.5    1.00x  ok   file_read_memory_budget_in_mb=2048
+   i_skipval             397.95    397.95    564.8    1.00x  ok   skip_validation_on_binary_section
+   i_all                 398.08    398.08    615.5    1.00x  ok   skip_validation + init_acceleration + read budget + io estimation
+   i_accel               398.11    398.11    560.7    1.00x  ok   init_acceleration
+
+-- token_emb --   (reference: i_base = 2.93 ms)
+   cond                best_min   med_min     init   vs_ref  npu  desc
+   i_base                  2.93      2.93    162.2    1.00x  ok   init reference (devices block only)
+   i_accel                 2.96      2.96    172.9    0.99x  ok   init_acceleration
+   i_skipval               2.98      2.98    159.4    0.98x  ok   skip_validation_on_binary_section
+   i_all                   3.04      3.04    219.1    0.96x  ok   skip_validation + init_acceleration + read budget + io estimation
+   i_udma                  3.06      3.06    188.1    0.95x  ok   extended_udma
+   i_ioest                 3.07      3.07    178.6    0.95x  ok   io_memory_estimation
+   i_budget                3.10      3.10    213.6    0.95x  ok   file_read_memory_budget_in_mb=2048
