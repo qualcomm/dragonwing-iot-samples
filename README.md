@@ -2,6 +2,12 @@
 
 This repository contains sample applications for the Qualcomm® Dragonwing IoT platform.
 
+## Samples
+
+| Sample | Board | Description |
+| --- | --- | --- |
+| [`qrb-ros-vla`](qrb-ros-vla/) | Qualcomm Dragonwing IQ-9075 EVK | Runs the Pi0.5 vision-language-action model as a ROS 2 Jazzy node on the Hexagon NPUs, with a LIBERO browser demo and headless replay smoke test. |
+
 ## Branches
 
 **main**: Primary development branch. Contributors should develop submissions based on this branch, and submit pull requests to this branch.

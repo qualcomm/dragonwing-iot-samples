@@ -1,0 +1,37 @@
+# Open-loop LIBERO replay AFTER the state-before-images ordering fix.
+# Method: demo/libero_replay.py --steps 15 --stride 12 --horizon 20, episode
+#   artifacts/libero_ep0.npz, vla_node with QNN_HTP_BURST=1, seed 0, denoise 10,
+#   htp_device_ids [1,1,0,0], all four contexts resident. Exclusive NPU access
+#   confirmed via fuser before the run; loadavg 0.14.
+# Baseline for comparison: bench/libero-replay-accuracy.txt = MAE/std 0.149, grip 0.036.
+# Run 2 of 2 (run 1 gave ALL 0.143, grip 0.022, latency 1140.7 ms mean).
+
+[INFO] [1785299973.058087266] [vla_libero_replay]: frame    0 | MAE 0.0358 | normalized MAE 0.160 | grip pred -0.98 truth -1.00
+[INFO] [1785299974.254863924] [vla_libero_replay]: frame   12 | MAE 0.0383 | normalized MAE 0.163 | grip pred -0.99 truth -1.00
+[INFO] [1785299975.464460070] [vla_libero_replay]: frame   24 | MAE 0.0367 | normalized MAE 0.096 | grip pred -0.98 truth -1.00
+[INFO] [1785299976.670730344] [vla_libero_replay]: frame   36 | MAE 0.0178 | normalized MAE 0.083 | grip pred -0.99 truth -1.00
+[INFO] [1785299977.873337965] [vla_libero_replay]: frame   48 | MAE 0.0348 | normalized MAE 0.125 | grip pred +0.99 truth +1.00
+[INFO] [1785299979.078153934] [vla_libero_replay]: frame   60 | MAE 0.0390 | normalized MAE 0.175 | grip pred +0.98 truth +1.00
+[INFO] [1785299980.274408096] [vla_libero_replay]: frame   72 | MAE 0.0359 | normalized MAE 0.198 | grip pred +0.99 truth +1.00
+[INFO] [1785299981.479691116] [vla_libero_replay]: frame   84 | MAE 0.0364 | normalized MAE 0.216 | grip pred +0.98 truth +1.00
+[INFO] [1785299982.691398022] [vla_libero_replay]: frame   96 | MAE 0.0411 | normalized MAE 0.262 | grip pred -0.97 truth -1.00
+[INFO] [1785299983.896192496] [vla_libero_replay]: frame  108 | MAE 0.0184 | normalized MAE 0.116 | grip pred -0.99 truth -1.00
+[INFO] [1785299985.096611171] [vla_libero_replay]: frame  120 | MAE 0.0159 | normalized MAE 0.098 | grip pred -0.99 truth -1.00
+[INFO] [1785299986.290028608] [vla_libero_replay]: frame  132 | MAE 0.0185 | normalized MAE 0.086 | grip pred -0.99 truth -1.00
+[INFO] [1785299987.486209204] [vla_libero_replay]: frame  144 | MAE 0.0264 | normalized MAE 0.101 | grip pred -0.99 truth -1.00
+[INFO] [1785299988.695275275] [vla_libero_replay]: frame  156 | MAE 0.0272 | normalized MAE 0.153 | grip pred -0.98 truth -1.00
+[INFO] [1785299989.901017402] [vla_libero_replay]: frame  168 | MAE 0.0272 | normalized MAE 0.144 | grip pred +0.99 truth +1.00
+
+LIBERO replay: 15 replanning steps, horizon 20, task 'put the white mug on the left plate and put the yellow and white mug on the right plate'
+    dim        MAE    MAE/std   action std
+     dx     0.0400      0.119        0.336
+     dy     0.0556      0.147        0.378
+     dz     0.0596      0.134        0.445
+  droll     0.0108      0.276        0.039
+ dpitch     0.0128      0.201        0.063
+   dyaw     0.0091      0.116        0.078
+   grip     0.0219      0.022        0.999
+    ALL     0.0300      0.145
+
+NPU latency: mean 1132.8 ms  p95 1139.7 ms  -> 0.88 chunks/s
+a 20-step horizon is 2.0 s of motion at 10.0 Hz, produced in 1.13 s (1.77x real time)

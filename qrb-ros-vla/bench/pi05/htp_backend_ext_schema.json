@@ -1,0 +1,531 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "contextProperties": {
+      "type": "object",
+      "properties": {
+        "contextKey": {
+          "type": "string"
+        },
+        "weight_sharing_enabled": {
+          "type": "boolean"
+        },
+        "max_spill_fill_buffer_for_group": {
+          "type": "integer"
+        },
+        "group_id": {
+          "type": "integer"
+        },
+        "concurrent_group_registration": {
+          "type": "object",
+          "properties": {
+            "group_id": {
+              "type": "integer"
+            },
+            "max_spill_fill_buffer_for_group": {
+              "type": "integer"
+            }
+          }
+        },
+        "file_read_memory_budget_in_mb": {
+          "type": "integer"
+        },
+        "dsp_memory_profiling_enabled": {
+          "type": "boolean"
+        },
+        "io_memory_estimation": {
+          "type": "boolean"
+        },
+        "prepare_only": {
+          "type": "boolean"
+        },
+        "init_acceleration": {
+          "type": "boolean"
+        },
+        "skip_validation_on_binary_section": {
+          "type": "boolean"
+        },
+        "extended_udma": {
+          "type": "boolean"
+        },
+        "lora_weight_sharing": {
+          "type": "boolean"
+        },
+        "detachable_buffers_enabled": {
+          "type": "boolean"
+        },
+        "lora_weight_sharing_ram_preload": {
+          "type": "boolean"
+        },
+        "reused_io_limit_mb": {
+          "type": "integer"
+        },
+        "reference_weight_sharing_enabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "legacyDcvsControl": {
+      "type": "object",
+      "properties": {
+        "sustainVote": {
+          "type": "boolean"
+        },
+        "enableDcvs": {
+          "type": "boolean"
+        },
+        "powerMode": {
+          "type": "string"
+        },
+        "sleep_latency_us": {
+          "type": "integer"
+        },
+        "sleep_disable": {
+          "type": "boolean"
+        },
+        "busVoltageCornerMin": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string"
+            },
+            "done": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "start",
+            "done"
+          ]
+        },
+        "busVoltageCornerTarget": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string"
+            },
+            "done": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "start",
+            "done"
+          ]
+        },
+        "busVoltageCornerMax": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string"
+            },
+            "done": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "start",
+            "done"
+          ]
+        },
+        "coreVoltageCornerMin": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string"
+            },
+            "done": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "start",
+            "done"
+          ]
+        },
+        "coreVoltageCornerTarget": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string"
+            },
+            "done": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "start",
+            "done"
+          ]
+        },
+        "coreVoltageCornerMax": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string"
+            },
+            "done": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "start",
+            "done"
+          ]
+        }
+      },
+      "required": [
+        "busVoltageCornerMin",
+        "busVoltageCornerTarget",
+        "busVoltageCornerMax",
+        "coreVoltageCornerMin",
+        "coreVoltageCornerTarget",
+        "coreVoltageCornerMax"
+      ]
+    },
+    "dcvsControl": {
+      "type": "object",
+      "properties": {
+        "enableDcvs": {
+          "type": "boolean"
+        },
+        "powerMode": {
+          "type": "string"
+        },
+        "sleep_latency_us": {
+          "type": "integer"
+        },
+        "sleep_disable": {
+          "type": "boolean"
+        },
+        "busVoltageCornerMin": {
+          "type": "string"
+        },
+        "busVoltageCornerTarget": {
+          "type": "string"
+        },
+        "busVoltageCornerMax": {
+          "type": "string"
+        },
+        "coreVoltageCornerMin": {
+          "type": "string"
+        },
+        "coreVoltageCornerTarget": {
+          "type": "string"
+        },
+        "coreVoltageCornerMax": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "busVoltageCornerMin",
+        "busVoltageCornerTarget",
+        "busVoltageCornerMax",
+        "coreVoltageCornerMin",
+        "coreVoltageCornerTarget",
+        "coreVoltageCornerMax"
+      ]
+    },
+    "hmxControl": {
+      "type": "object",
+      "properties": {
+        "hmxPickDefault": {
+          "type": "integer"
+        },
+        "hmxPerfMode": {
+          "type": "integer"
+        },
+        "hmxVoltageCornerMin": {
+          "type": "string"
+        },
+        "hmxVoltageCornerTarget": {
+          "type": "string"
+        },
+        "hmxVoltageCornerMax": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "hmxVoltageCornerMin",
+        "hmxVoltageCornerTarget",
+        "hmxVoltageCornerMax"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "graphs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "graph_names": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "vtcm_mb": {
+            "type": "integer"
+          },
+          "vtcm_size": {
+            "type": "integer"
+          },
+          "pge": {
+            "type": "object",
+            "properties": {
+              "vtcm": {
+                "type": "object",
+                "properties": {
+                  "size": {
+                    "type": "integer"
+                  },
+                  "offset": {
+                    "type": "integer"
+                  },
+                  "size_total": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          },
+          "hmx_op_bounding": {
+            "type": "object",
+            "properties": {
+              "hmx_frequency": {
+                "type": "number"
+              },
+              "dsp_core_frequency": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "hmx_frequency",
+              "dsp_core_frequency"
+            ]
+          },
+          "fp16_relaxed_precision": {
+            "type": "integer"
+          },
+          "num_cores": {
+            "type": "integer"
+          },
+          "hvx_threads": {
+            "type": "integer"
+          },
+          "O": {
+            "type": "number",
+            "multipleOf": 1
+          },
+          "assume_same_quant": {
+            "type": "boolean"
+          },
+          "share_io_buffer": {
+            "type": "boolean"
+          },
+          "advanced_activation_fusion": {
+            "type": "boolean"
+          },
+          "short_depth_conv_on_hmx_off": {
+            "type": "boolean"
+          },
+          "high_precision_sigmoid": {
+            "type": "boolean"
+          },
+          "monolithic_lstm": {
+            "type": "boolean"
+          },
+          "fold_relu_activation_into_conv_off": {
+            "type": "boolean"
+          },
+          "dlbc": {
+            "type": "number",
+            "multipleOf": 1
+          },
+          "dlbc_weights": {
+            "type": "number",
+            "multipleOf": 1
+          },
+          "sparse_weights_compression": {
+            "type": "number",
+            "multipleOf": 1
+          },
+          "slc_alloc_enable": {
+            "type": "number",
+            "multipleOf": 1
+          },
+          "finalize_config": {
+            "type": "object"
+          },
+          "weights_packing": {
+            "type": "boolean"
+          },
+          "perf_profile": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "devices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "device_id": {
+            "type": "integer"
+          },
+          "core_id": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "core_type": {
+            "type": "integer"
+          },
+          "device_type": {
+            "type": "integer"
+          },
+          "soc_id": {
+            "type": "integer"
+          },
+          "soc_model": {
+            "type": "integer"
+          },
+          "dsp_arch": {
+            "type": "string"
+          },
+          "pd_session": {
+            "type": "string"
+          },
+          "profiling_level": {
+            "type": "string"
+          },
+          "use_client_context": {
+            "type": "boolean"
+          },
+          "cores": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "perf_profile": {
+                  "type": "string"
+                },
+                "rpc_control_latency": {
+                  "type": "integer"
+                },
+                "rpc_polling_time": {
+                  "type": "integer"
+                },
+                "hmx_timeout_us": {
+                  "type": "integer"
+                },
+                "adaptive_polling_time": {
+                  "type": "integer"
+                },
+                "ddr_perf_mode": {
+                  "type": "boolean"
+                },
+                "custom": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "dcvsControl": {
+                          "$ref": "#/definitions/legacyDcvsControl"
+                        }
+                      },
+                      "required": [
+                        "dcvsControl"
+                      ]
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "sustainInferencePerfState": {
+                            "type": "boolean"
+                          },
+                          "dcvsControl": {
+                            "$ref": "#/definitions/dcvsControl"
+                          },
+                          "hmxControl": {
+                            "$ref": "#/definitions/hmxControl"
+                          },
+                          "graphState": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "inference_start",
+                                "init_start",
+                                "deinit_start",
+                                "inference_done",
+                                "init_done",
+                                "deinit_done"
+                              ]
+                            },
+                            "minItems": 1,
+                            "uniqueItems": true
+                          }
+                        },
+                        "required": [
+                          "graphState",
+                          "dcvsControl"
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "hmxControl": {
+                  "$ref": "#/definitions/hmxControl"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "context": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/contextProperties"
+          }
+        },
+        {
+          "$ref": "#/definitions/contextProperties"
+        }
+      ]
+    },
+    "groupContext": {
+      "type": "object",
+      "properties": {
+        "share_resources": {
+          "type": "boolean"
+        },
+        "share_resources_optimization_type": {
+          "type": "integer"
+        },
+        "reused_io_limit_mb": {
+          "type": "integer"
+        }
+      }
+    },
+    "memory": {
+      "type": "object",
+      "properties": {
+        "mem_type": {
+          "type": "string",
+          "enum": [
+            "shared_buffer"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "episode": "artifacts/libero_ep0.npz",
+  "init_index": 7,
+  "settle": 10,
+  "results": [
+    {
+      "label": "repeat=1 (10 Hz effective)",
+      "frames": 200,
+      "pos_err_mm_mean": 9.088610403279604,
+      "pos_err_mm_median": 8.197464680090363,
+      "pos_err_mm_max": 11.989115240096284,
+      "pos_err_mm_at_10": 8.19454229380943,
+      "pos_err_mm_at_50": 8.647154963024647,
+      "rot_err_mean": 0.0031480443453530903,
+      "rot_err_max": 0.006706734028172608,
+      "grip_err_mean": 0.0011173405091824652
+    },
+    {
+      "label": "repeat=2 (20 Hz effective)",
+      "frames": 200,
+      "pos_err_mm_mean": 207.07858042890996,
+      "pos_err_mm_median": 201.92134937487594,
+      "pos_err_mm_max": 328.71571386552364,
+      "pos_err_mm_at_10": 23.928532559272185,
+      "pos_err_mm_at_50": 217.06556901140513,
+      "rot_err_mean": 0.6019911606371386,
+      "rot_err_max": 1.4291217060773038,
+      "grip_err_mean": 0.0034396828164073735
+    }
+  ],
+  "verdict": "repeat=1 (10 Hz effective)"
+}

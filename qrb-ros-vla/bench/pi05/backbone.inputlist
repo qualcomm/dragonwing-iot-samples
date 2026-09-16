@@ -1,0 +1,1 @@
+prefix_att_2d_masks:=/home/ubuntu/QRB-ROS-VLA/bench/pi05/inputs/backbone__prefix_att_2d_masks.raw hidden_state:=/home/ubuntu/QRB-ROS-VLA/bench/pi05/inputs/backbone__hidden_state.raw rope_emb_cos:=/home/ubuntu/QRB-ROS-VLA/bench/pi05/inputs/backbone__rope_emb_cos.raw rope_emb_sin:=/home/ubuntu/QRB-ROS-VLA/bench/pi05/inputs/backbone__rope_emb_sin.raw

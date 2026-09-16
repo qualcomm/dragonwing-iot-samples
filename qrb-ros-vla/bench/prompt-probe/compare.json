@@ -1,0 +1,90 @@
+{
+  "scene": "/home/ubuntu/QRB-ROS-VLA/demo/scenes/sandbox_table.bddl",
+  "records": [
+    {
+      "mode": "same_state_compare",
+      "note": "diffs are mean |a-b| per action dim, in units of the dataset action std",
+      "repeat_noise": [
+        {
+          "prompt": "pick up the black bowl",
+          "normalized_mean_abs_diff": 0.1241
+        },
+        {
+          "prompt": "pick up the plate",
+          "normalized_mean_abs_diff": 0.1199
+        }
+      ],
+      "prompt_pairs": [
+        {
+          "a": "pick up the black bowl",
+          "b": "pick up the plate",
+          "normalized_mean_abs_diff": 0.5268
+        },
+        {
+          "a": "pick up the black bowl",
+          "b": "wave hi",
+          "normalized_mean_abs_diff": 0.2021
+        },
+        {
+          "a": "pick up the black bowl",
+          "b": "do nothing at all",
+          "normalized_mean_abs_diff": 0.296
+        },
+        {
+          "a": "pick up the plate",
+          "b": "wave hi",
+          "normalized_mean_abs_diff": 0.4123
+        },
+        {
+          "a": "pick up the plate",
+          "b": "do nothing at all",
+          "normalized_mean_abs_diff": 0.3208
+        },
+        {
+          "a": "wave hi",
+          "b": "do nothing at all",
+          "normalized_mean_abs_diff": 0.1712
+        }
+      ],
+      "first_action_per_prompt": {
+        "pick up the black bowl": [
+          0.0601,
+          0.0144,
+          0.0076,
+          -0.0008,
+          0.0132,
+          -0.0094,
+          -0.9859
+        ],
+        "pick up the plate": [
+          0.0054,
+          -0.0088,
+          -0.0165,
+          0.0017,
+          0.0174,
+          -0.0039,
+          -0.994
+        ],
+        "wave hi": [
+          -0.0324,
+          0.0056,
+          -0.0231,
+          0.0006,
+          0.0013,
+          -0.015,
+          -0.9871
+        ],
+        "do nothing at all": [
+          -0.0395,
+          0.009,
+          -0.0278,
+          -0.0017,
+          -0.0056,
+          0.0051,
+          -0.9782
+        ]
+      },
+      "backend": "libQnnHtp.so"
+    }
+  ]
+}

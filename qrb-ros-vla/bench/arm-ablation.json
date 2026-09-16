@@ -1,0 +1,188 @@
+{
+  "baseline": {
+    "k": 86,
+    "n": 100,
+    "rate": 0.86,
+    "ci": [
+      0.7786263961619276,
+      0.914737342455351
+    ]
+  },
+  "gate": {
+    "ran": true,
+    "pass": true,
+    "note": "'none' must overlap the baseline interval, else the harness perturbs something it should not and no other row can be trusted."
+  },
+  "conditions": [
+    {
+      "mode": "none",
+      "question": "GATE: does the ablation harness leave the loop unchanged?",
+      "k": 18,
+      "n": 20,
+      "rate": 0.9,
+      "ci95_wilson": [
+        0.699,
+        0.9721
+      ],
+      "arm_spec_status": [
+        "assumed"
+      ],
+      "arm_frame_rate_hz": [
+        50.0
+      ],
+      "slew_clipped_steps": 0,
+      "arm_steps": 6072,
+      "tasks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "at_step_cap": 2,
+      "delta_vs_baseline_pts": 4.0,
+      "separated_from_baseline": false
+    },
+    {
+      "mode": "state-const",
+      "question": "Can the policy work when told nothing about joint state?",
+      "k": 44,
+      "n": 50,
+      "rate": 0.88,
+      "ci95_wilson": [
+        0.7619,
+        0.9438
+      ],
+      "arm_spec_status": [
+        "assumed"
+      ],
+      "arm_frame_rate_hz": [
+        50.0
+      ],
+      "slew_clipped_steps": 0,
+      "arm_steps": 15430,
+      "tasks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "at_step_cap": 6,
+      "delta_vs_baseline_pts": 2.0,
+      "separated_from_baseline": false
+    },
+    {
+      "mode": "dof5",
+      "question": "What does the wrist DOF a 5-joint arm lacks cost?",
+      "k": 25,
+      "n": 50,
+      "rate": 0.5,
+      "ci95_wilson": [
+        0.3664,
+        0.6336
+      ],
+      "arm_spec_status": [
+        "assumed"
+      ],
+      "arm_frame_rate_hz": [
+        50.0
+      ],
+      "slew_clipped_steps": 0,
+      "arm_steps": 19781,
+      "tasks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "at_step_cap": 25,
+      "delta_vs_baseline_pts": -36.0,
+      "separated_from_baseline": true
+    },
+    {
+      "mode": "quant",
+      "question": "What does the PWM command quantum cost?",
+      "k": 43,
+      "n": 50,
+      "rate": 0.86,
+      "ci95_wilson": [
+        0.7381,
+        0.9305
+      ],
+      "arm_spec_status": [
+        "assumed"
+      ],
+      "arm_frame_rate_hz": [
+        50.0
+      ],
+      "slew_clipped_steps": 0,
+      "arm_steps": 15779,
+      "tasks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "at_step_cap": 7,
+      "delta_vs_baseline_pts": 0.0,
+      "separated_from_baseline": false
+    },
+    {
+      "mode": "composite",
+      "question": "All of the above at once: the ceiling for a correctly-sized hobby arm.",
+      "k": 25,
+      "n": 50,
+      "rate": 0.5,
+      "ci95_wilson": [
+        0.3664,
+        0.6336
+      ],
+      "arm_spec_status": [
+        "assumed"
+      ],
+      "arm_frame_rate_hz": [
+        50.0
+      ],
+      "slew_clipped_steps": 0,
+      "arm_steps": 19695,
+      "tasks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "at_step_cap": 25,
+      "delta_vs_baseline_pts": -36.0,
+      "separated_from_baseline": true
+    }
+  ]
+}

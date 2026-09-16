@@ -1,0 +1,37 @@
+# macOS/editor junk
+.DS_Store
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv/
+.venv-tools/
+
+# Local assistant/config state
+.claude/
+
+# ROS 2 / colcon
+ros2_ws/build/
+ros2_ws/install/
+ros2_ws/log/
+
+# Model artifacts: Pi0.5 context binaries, tokenizer, generated LIBERO episode,
+# and the generated local manifest. `scripts/iq9-one-shot-demo.sh` fetches and
+# regenerates them on the board.
+artifacts/*
+!artifacts/.gitkeep
+
+# Raw tensor dumps are hundreds of MB. The JSON latency summaries and the
+# accuracy report ARE committed: they are the evidence behind published numbers.
+bench/pi05/inputs/
+bench/graph-io/*.log
+*.raw
+
+# Blog video assets are build outputs; the posters beside them ARE committed.
+docs/blog/assets/*.mp4

@@ -1,0 +1,19 @@
+{
+  "bundle": "artifacts/pi05-qnn_context_binary-mixed-qualcomm_qcs9075",
+  "backend": "libQnnHtp.so",
+  "resident": "vision_encoder,action_expert",
+  "denoise_steps": 10,
+  "iters": 5,
+  "warmup": 2,
+  "load_seconds": 0.9293,
+  "chunks_per_second": 0.3252,
+  "stage_ms": {
+    "vision_encoder_all_cameras": {"mean": 137.3002, "p50": 137.2474, "p95": 138.1915, "min": 136.5003, "max": 138.1915, "stddev": 0.5595},
+    "token_emb": {"mean": 16.6185, "p50": 16.4291, "p95": 17.5619, "min": 15.6979, "max": 17.5619, "stddev": 0.6351},
+    "backbone": {"mean": 493.2419, "p50": 492.5494, "p95": 497.3062, "min": 489.8591, "max": 497.3062, "stddev": 2.4759},
+    "action_expert_all_steps": {"mean": 377.6154, "p50": 373.6277, "p95": 387.4776, "min": 368.9624, "max": 387.4776, "stddev": 7.4963},
+    "host_packing": {"mean": 5.7841, "p50": 6.0247, "p95": 6.1813, "min": 5.2418, "max": 6.1813, "stddev": 0.3739},
+    "context_create_free": {"mean": 2043.8999, "p50": 2043.1714, "p95": 2055.4298, "min": 2032.7060, "max": 2055.4298, "stddev": 8.2213},
+    "total_per_chunk": {"mean": 3074.7828, "p50": 3077.5938, "p95": 3080.8026, "min": 3068.0347, "max": 3080.8026, "stddev": 5.5215}
+  }
+}

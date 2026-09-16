@@ -1,0 +1,59 @@
+{
+  "pooled": {
+    "k": 86,
+    "n": 100,
+    "rate": 0.86,
+    "ci95_wilson": [
+      0.7786263961619276,
+      0.914737342455351
+    ]
+  },
+  "bands": [
+    {
+      "file": "libero-closed-loop-sweep.jsonl",
+      "label": "inits 0-4",
+      "k": 42,
+      "n": 50,
+      "rate": 0.84,
+      "ci": [
+        0.7148551903823401,
+        0.9166267863791231
+      ]
+    },
+    {
+      "file": "libero-closed-loop-inits20.jsonl",
+      "label": "inits 20-24",
+      "k": 44,
+      "n": 50,
+      "rate": 0.88,
+      "ci": [
+        0.7619492111337642,
+        0.9438247628937535
+      ]
+    }
+  ],
+  "chunks": 3153,
+  "backends": [
+    "libQnnHtp.so"
+  ],
+  "stale_chunks": 0,
+  "retries": 0,
+  "latency_ms": {
+    "mean": 1128.1114,
+    "min": 1104.7,
+    "max": 1148.54
+  },
+  "failures": {
+    "count": 14,
+    "at_step_cap": 14
+  },
+  "provenance": {
+    "suite": "libero_10",
+    "replan_horizon": "10",
+    "max_steps": "520",
+    "mujoco": "3.2.7",
+    "robosuite": "1.4.0",
+    "image_orientation": "rot180 (both cameras)",
+    "steps_per_action": "1"
+  }
+}

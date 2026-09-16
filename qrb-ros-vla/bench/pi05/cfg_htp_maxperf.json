@@ -1,0 +1,56 @@
+{
+  "devices": [
+    {
+      "device_id": 0,
+      "core_id": [0],
+      "dsp_arch": "v73",
+      "soc_id": 676,
+      "soc_model": 77,
+      "pd_session": "unsigned",
+      "core_type": 0,
+      "device_type": 0,
+      "cores": [
+        {
+          "perf_profile": "custom",
+          "rpc_control_latency": 100,
+          "rpc_polling_time": 9999,
+          "hmx_timeout_us": 1000000,
+          "adaptive_polling_time": 1000,
+          "custom": [
+            {
+              "graphState": ["init_start", "inference_start"],
+              "sustainInferencePerfState": true,
+              "dcvsControl": {
+                "enableDcvs": false,
+                "sleep_disable": true,
+                "sleep_latency_us": 40,
+                "powerMode": "QNN_HTP_PERF_INFRASTRUCTURE_POWERMODE_PERFORMANCE_MODE",
+                "busVoltageCornerMin": "DCVS_VOLTAGE_VCORNER_MAX_VOLTAGE_CORNER",
+                "busVoltageCornerTarget": "DCVS_VOLTAGE_VCORNER_MAX_VOLTAGE_CORNER",
+                "busVoltageCornerMax": "DCVS_VOLTAGE_VCORNER_MAX_VOLTAGE_CORNER",
+                "coreVoltageCornerMin": "DCVS_VOLTAGE_VCORNER_MAX_VOLTAGE_CORNER",
+                "coreVoltageCornerTarget": "DCVS_VOLTAGE_VCORNER_MAX_VOLTAGE_CORNER",
+                "coreVoltageCornerMax": "DCVS_VOLTAGE_VCORNER_MAX_VOLTAGE_CORNER"
+              },
+              "hmxControl": {
+                "hmxPickDefault": 0,
+                "hmxPerfMode": 0,
+                "hmxVoltageCornerMin": "DCVS_EXP_VCORNER_MAX",
+                "hmxVoltageCornerTarget": "DCVS_EXP_VCORNER_MAX",
+                "hmxVoltageCornerMax": "DCVS_EXP_VCORNER_MAX"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "memory": {
+    "mem_type": "shared_buffer"
+  },
+  "context": {
+    "init_acceleration": true,
+    "io_memory_estimation": true,
+    "file_read_memory_budget_in_mb": 256
+  }
+}

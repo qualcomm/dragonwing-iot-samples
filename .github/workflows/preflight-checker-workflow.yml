@@ -1,6 +1,6 @@
-name: preflight-checkers 
+name: preflight-checkers
 on:
-  pull_request_target:
+  pull_request:
     branches: [ "main" ]
   push:
     branches: [ "main" ]
@@ -8,12 +8,12 @@ on:
 
 jobs:
   checker:
-    uses: qualcomm-linux/qli-actions/.github/workflows/multi-checker.yml@main
+    uses: qualcomm/qcom-reusable-workflows/.github/workflows/reusable-qcom-preflight-checks-orchestrator.yml@91b6aaf83b6da6ccf30c2ffb99677937f64630f2 # v2
     with:
-        repolinter: true # default: true
-        semgrep: true # default: true
-        copyright-license-detector: true # default: true
-        pr-check-emails: true # default: true
+        enable-repolinter-check: true # default: true
+        enable-semgrep-scan: true # default: true
+        enable-copyright-license-check: true # default: true
+        enable-commit-email-check: true # default: true
 
     secrets:
       SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}

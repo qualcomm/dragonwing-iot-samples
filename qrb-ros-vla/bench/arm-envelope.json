@@ -1,0 +1,113 @@
+{
+  "source_npz": "artifacts/libero_ep0.npz",
+  "arm_spec_status": "assumed",
+  "arm_spec_digest": "44edf40302b6",
+  "controller_scaling": {
+    "output_max_pos_m": 0.05,
+    "output_max_rot_rad": 0.5,
+    "_source": "robosuite OSC_POSE default (venv/.../robosuite/controllers/config/osc_pose.json), control_delta=true. Read back from the live env at runtime by the ablation harness and recorded in provenance -- these copies are for the offline envelope analysis only."
+  },
+  "demand": {
+    "task": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+    "frames": 200,
+    "fps": 10.0,
+    "eef_span_mm": {
+      "x": 103.44,
+      "y": 581.43,
+      "z": 169.33
+    },
+    "eef_bbox_diagonal_mm": 614.35,
+    "step_translation_mm": {
+      "p50": 7.3041,
+      "p90": 9.7029,
+      "p95": 10.0065,
+      "p99": 10.5239,
+      "p100": 10.7076
+    },
+    "step_rotation_deg": {
+      "p50": 0.5389,
+      "p90": 1.0386,
+      "p95": 1.0586,
+      "p99": 1.0861,
+      "p100": 1.2035
+    },
+    "total_path_mm": 1322.7
+  },
+  "frame_rate_candidates": [
+    {
+      "status": "assumed",
+      "spec_digest": "44edf40302b6",
+      "frame_rate_hz": 50.0,
+      "us_per_count": 4.8828,
+      "counts_over_travel": 409.6,
+      "deg_per_count": 0.4395,
+      "mm_per_count_at_max_reach": 2.301,
+      "slew_deg_per_s": 375.0,
+      "slew_deg_per_tick": 37.5,
+      "counts_per_median_rotation_step": 1.23,
+      "counts_per_median_translation_step": 3.17,
+      "verdict": "quantizes the commanded motion away"
+    },
+    {
+      "status": "assumed",
+      "spec_digest": "44edf40302b6",
+      "frame_rate_hz": 100.0,
+      "us_per_count": 2.4414,
+      "counts_over_travel": 819.2,
+      "deg_per_count": 0.2197,
+      "mm_per_count_at_max_reach": 1.1505,
+      "slew_deg_per_s": 375.0,
+      "slew_deg_per_tick": 37.5,
+      "counts_per_median_rotation_step": 2.45,
+      "counts_per_median_translation_step": 6.35,
+      "verdict": "marginal"
+    },
+    {
+      "status": "assumed",
+      "spec_digest": "44edf40302b6",
+      "frame_rate_hz": 200.0,
+      "us_per_count": 1.2207,
+      "counts_over_travel": 1638.4,
+      "deg_per_count": 0.1099,
+      "mm_per_count_at_max_reach": 0.5752,
+      "slew_deg_per_s": 375.0,
+      "slew_deg_per_tick": 37.5,
+      "counts_per_median_rotation_step": 4.91,
+      "counts_per_median_translation_step": 12.7,
+      "verdict": "adequate"
+    },
+    {
+      "status": "assumed",
+      "spec_digest": "44edf40302b6",
+      "frame_rate_hz": 330.0,
+      "us_per_count": 0.7398,
+      "counts_over_travel": 2703.4,
+      "deg_per_count": 0.0666,
+      "mm_per_count_at_max_reach": 0.3486,
+      "slew_deg_per_s": 375.0,
+      "slew_deg_per_tick": 37.5,
+      "counts_per_median_rotation_step": 8.09,
+      "counts_per_median_translation_step": 20.95,
+      "verdict": "adequate"
+    }
+  ],
+  "verdicts": {
+    "slew": {
+      "needed_deg_per_tick": 1.203,
+      "available_deg_per_tick": 37.5,
+      "margin_x": 31.2,
+      "binding": false
+    },
+    "quantization": {
+      "at_default_frame_rate_hz": 50.0,
+      "counts_per_median_rotation_step": 1.23,
+      "binding": true,
+      "recommended_frame_rate_hz": 200.0
+    },
+    "workspace": {
+      "analyzed_here": false,
+      "reason": "Reach must be measured from the robot base, and LIBERO's base position is scene-dependent (three distinct values across libero_10). A .npz does not record which scene it came from, so this script does not guess. See bench/arm-workspace-screen.json.",
+      "authority": "bench/verify_arm_workspace.py"
+    }
+  }
+}

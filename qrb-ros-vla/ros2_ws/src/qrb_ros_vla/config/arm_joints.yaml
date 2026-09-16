@@ -1,0 +1,120 @@
+# VUPN2355 6-servo desktop arm -- hardware channel binding.
+#
+# This file describes the ARM, not the policy. It is deliberately free of any
+# Pi0.5 / LIBERO / Franka concepts: the policy emits 6-DOF Cartesian deltas for
+# a 7-DOF embodiment and this arm has 5 joints plus a gripper, so the mapping
+# between them is a separate (and separately hard) problem. Anything that reads
+# this file should already be working in joint space.
+#
+# Measured on the dev IQ-9075 EVK, 2026-08-03. See docs/ARM_WIRING_BRIEF.md.
+#
+# Transport
+#   /dev/i2c-18 = soc@0/geniqup@8c0000/i2c@890000, function qup2_se4,
+#                 GPIO 96 (SCL) / GPIO 95 (SDA) = JLS1 pin 15 / pin 17.
+#   That bus also carries 4x PCA953x @ 0x38-0x3b and the board ID EEPROM @ 0x50.
+#   One of those expander lines gates vreg_sdc, so an I2C fault here has
+#   board-level consequences, not just arm-level ones.
+
+bus: 18
+address: 0x40
+pwm_hz: 50 # PRE_SCALE 0x79 -> 25 MHz / (4096 * 122) = 50.032 Hz
+
+# All six servos are TD-8125MG. Rated pulse range is identical across them;
+# what differs is mechanical travel, and therefore degrees per microsecond.
+servo:
+  model: TD-8125MG
+  pulse_min_us: 500
+  pulse_max_us: 2500
+  pulse_centre_us: 1500
+
+joints:
+  # ---------------------------------------------------------------------------
+  # channel      PCA9685 output, 0-15
+  # travel_deg   mechanical travel over the full 500-2500 us span
+  # deg_per_us   travel_deg / 2000. The base is 270 deg over the SAME pulse
+  #              span as the others, so it moves 1.5x further per microsecond.
+  #              Getting this wrong makes every base command 1.5x too large.
+  # soft_min_us / soft_max_us
+  #              PROVISIONAL travel limits, not the servo's rated range. These
+  #              exist because the arm has no position feedback and the policy
+  #              driving it is out-of-distribution: the first thing an untrusted
+  #              command does is slam a joint into an endstop and stall the
+  #              gearbox. Widen these only after the per-joint calibration in
+  #              ARM_WIRING_BRIEF.md section 5.8 establishes real limits.
+  # verified     how the channel-to-joint binding is known. Do not upgrade a
+  #              row to "observed" without actually watching that joint move.
+  # ---------------------------------------------------------------------------
+
+  - channel: 0
+    name: base_yaw
+    travel_deg: 270
+    deg_per_us: 0.135
+    soft_min_us: 1200
+    soft_max_us: 1800
+    verified: inferred
+    note: >-
+      270 deg travel, unlike every other joint. Carries the entire arm, so it
+      has the largest inertia and the widest sweep at the tool -- the joint most
+      likely to hurt something. Test last and with the smallest amplitude.
+
+  - channel: 1
+    name: shoulder_pitch
+    travel_deg: 180
+    deg_per_us: 0.09
+    soft_min_us: 1200
+    soft_max_us: 1800
+    verified: inferred
+    note: >-
+      Holds the outstretched arm against gravity, so this is the joint that
+      sits at partial stall in steady state -- the thermal design case in
+      ARM_WIRING_BRIEF.md section 5.3, not the no-load figure.
+
+  - channel: 2
+    name: elbow_pitch
+    travel_deg: 180
+    deg_per_us: 0.09
+    soft_min_us: 1200
+    soft_max_us: 1800
+    verified: inferred
+
+  - channel: 3
+    name: wrist_pitch
+    travel_deg: 180
+    deg_per_us: 0.09
+    soft_min_us: 1200
+    soft_max_us: 1800
+    verified: inferred
+
+  - channel: 4
+    name: wrist_roll
+    travel_deg: 180
+    deg_per_us: 0.09
+    soft_min_us: 1200
+    soft_max_us: 1800
+    verified: observed
+    note: Confirmed by watching it move, 2026-08-03.
+
+  - channel: 5
+    name: gripper
+    travel_deg: 180
+    deg_per_us: 0.09
+    soft_min_us: 1200
+    soft_max_us: 1800
+    verified: observed
+    note: >-
+      Confirmed by watching it move, 2026-08-03 -- the first joint on this arm
+      ever driven from the NPU board. Lowest-consequence channel, so it stays
+      the default target for smoke tests.
+
+# UNVERIFIED, carried here so it is not lost:
+#   - Channels 0-3 are inferred from the standard 5-DOF chain (base, shoulder,
+#     elbow, wrist pitch, wrist roll) plus the observed ch4=wrist_roll and
+#     ch5=gripper. Only ch4 and ch5 have been watched moving. In particular the
+#     ch2/ch3 split between elbow and wrist pitch is an assumption: a "wrist"
+#     on this class of arm can be one servo or two.
+#     Close it with:  ./scripts/servo-pulse-test.sh <channel> 60
+#   - Every soft_min_us/soft_max_us above is a placeholder, not a measurement.
+#   - travel_deg comes from the vendor listing (base 270, others 180), not from
+#     anything measured on this unit.
+#   - JLS1 I2C pad voltage is still unmeasured. The link works, which proves
+#     communication, not that the SoC pads are inside spec.

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<package format="3">
+  <name>qrb_ros_vla</name>
+  <version>0.1.0</version>
+  <description>
+    Pi0.5 vision-language-action inference on the Qualcomm Dragonwing IQ-9075
+    Hexagon NPU, exposed as a ROS 2 Jazzy node via qrb_inference_manager.
+  </description>
+  <maintainer email="qrb-ros-vla-maintainers@users.noreply.github.com">QRB ROS VLA contributors</maintainer>
+  <license>BSD-3-Clause</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>rclcpp_components</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>cv_bridge</depend>
+  <depend>qrb_inference_manager</depend>
+  <depend>qrb_ros_vla_msgs</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
