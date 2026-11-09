@@ -31,7 +31,7 @@ def _default_repo_root() -> str:
     for parent in share.parents:
         if (parent / "artifacts").is_dir():
             return str(parent)
-    return str(Path.home() / "QRB-ROS-VLA")
+    return str(Path.home() / "dragonwing-iot-samples" / "qrb-ros-vla")
 
 
 def generate_launch_description() -> LaunchDescription:

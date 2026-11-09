@@ -113,7 +113,11 @@ sudo apt-get update
 sudo apt-get install -y git
 git clone https://github.com/qualcomm/dragonwing-iot-samples.git ~/dragonwing-iot-samples
 cd ~/dragonwing-iot-samples/qrb-ros-vla
+chmod +x scripts/*.sh scripts/*.py
 ```
+
+The `chmod` makes the helper scripts executable so they can be run directly as `scripts/<name>`
+(downloads such as GitHub ZIP archives do not always keep the executable bit).
 
 ### 5. Configure Qualcomm AI Hub access
 The model fetch step uses `qai-hub-models fetch Pi0.5`. If you already have a pre-fetched bundle, copy
@@ -139,7 +143,7 @@ artifacts/manifest.sha256
 
 ```bash
 # DEVICE
-cd ~/QRB-ROS-VLA
+cd ~/dragonwing-iot-samples/qrb-ros-vla
 scripts/iq9-one-shot-demo.sh
 ```
 
@@ -169,7 +173,7 @@ If setup is already complete and you only need to reopen the demo:
 
 ```bash
 # DEVICE
-cd ~/QRB-ROS-VLA
+cd ~/dragonwing-iot-samples/qrb-ros-vla
 scripts/start-libero-web-demo.sh
 ```
 
@@ -194,6 +198,7 @@ first-run failures:
 | `Conflicting values set for option Trusted` | Delete the duplicate `qcom-ppa` source list entry; the stock image already has it |
 | `Permission denied` opening `/dev/fastrpc-cdsp` | `sudo usermod -aG fastrpc $(id -un)`, then log out and back in |
 | `Pi0.5 bundle fetch failed` | Authenticate Qualcomm AI Hub or copy a verified bundle into `artifacts/` |
+| `Using newer context binary on old SDK` | The bundle was compiled with a newer QAIRT than the installed `qairt-libs`. Rerun `scripts/iq9-one-shot-demo.sh --setup-only`; it detects the mismatch and fetches the newest bundle the installed runtime can load |
 | Browser cannot open port 8080 | Confirm the laptop and board are on the same network and the tmux web pane is still running |
 
 ## Quick commands after setup

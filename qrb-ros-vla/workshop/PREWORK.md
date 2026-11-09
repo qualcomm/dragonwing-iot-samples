@@ -92,7 +92,7 @@ Two scripts, both idempotent — safe to re-run if they fail partway. Roughly 15
 
 ```
 DEVICE
-cd ~/QRB-ROS-VLA
+cd ~/dragonwing-iot-samples/qrb-ros-vla
 ./scripts/install-ros2-jazzy.sh
 ./scripts/install-qrb-ros.sh
 sudo apt-get install -y qairt-libs qairt-tools qairt-headers libsentencepiece-dev python3-pil
@@ -151,7 +151,7 @@ module, run the artifact phase now so the live room never waits for AI Hub downl
 
 ```
 DEVICE
-cd ~/QRB-ROS-VLA
+cd ~/dragonwing-iot-samples/qrb-ros-vla
 python3 -m venv .venv-tools
 .venv-tools/bin/python -m pip install --upgrade pip qai-hub-models pyarrow pillow 'numpy<3' uv
 ./scripts/fetch-tokenizer.sh
@@ -177,7 +177,7 @@ created in step 4:
 
 ```
 DEVICE
-cd ~/QRB-ROS-VLA
+cd ~/dragonwing-iot-samples/qrb-ros-vla
 PYTHON=.venv-tools/bin/python ./scripts/fetch-libero-episode.sh /tmp/libero
 cd artifacts
 sha256sum paligemma_tokenizer.model \
@@ -208,7 +208,7 @@ minutes. Everything is wheels; nothing compiles.
 
 ```
 DEVICE
-cd ~/QRB-ROS-VLA
+cd ~/dragonwing-iot-samples/qrb-ros-vla
 ./scripts/install-libero.sh
 ```
 
@@ -247,7 +247,7 @@ do not wait for the day.
 
 ```
 DEVICE
-cd ~/QRB-ROS-VLA
+cd ~/dragonwing-iot-samples/qrb-ros-vla
 ./workshop/scripts/preflight.sh
 ```
 
@@ -271,7 +271,7 @@ VLA for real. About three minutes, mostly the build:
 
 ```
 DEVICE
-cd ~/QRB-ROS-VLA
+cd ~/dragonwing-iot-samples/qrb-ros-vla
 ./workshop/scripts/fastforward.sh 1
 ```
 

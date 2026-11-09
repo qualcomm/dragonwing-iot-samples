@@ -44,28 +44,105 @@ step() {
   printf '\n==> %s\n' "$*"
 }
 
+BUNDLE_FETCH_ARGS=(--runtime qnn_context_binary --precision mixed --chipset qualcomm-qcs9075)
+
+# QNN context binaries load only on a QAIRT runtime at least as new as the SDK that
+# compiled them ("Using newer context binary on old SDK", err 5000). AI Hub's latest
+# Pi0.5 build can be ahead of the qairt-libs in the PPA, so the bundle has to be
+# chosen to match the runtime installed on this board, not just the newest one.
+
+# Trim "2.49.0-0ubuntu1~bpo24.04.2" or "2.45.0.260326154327" to "2.49.0" / "2.45.0".
+short_version() {
+  sed -E 's/^([0-9]+\.[0-9]+\.[0-9]+).*/\1/' <<<"$1"
+}
+
+installed_qairt_version() {
+  local version
+  version="$(dpkg-query -W -f='${Version}' qairt-libs 2>/dev/null)" || return 1
+  [[ -n "$version" ]] || return 1
+  short_version "$version"
+}
+
+bundle_qairt_version() {
+  python3 -c 'import json, sys; print(json.load(open(sys.argv[1]))["tool_versions"]["qairt"])' \
+    "$BUNDLE_DIR/metadata.json" 2>/dev/null
+}
+
+# True if a bundle compiled with QAIRT $1 can run on QAIRT runtime $2.
+qairt_runs_on() {
+  dpkg --compare-versions "$(short_version "$1")" le "$2"
+}
+
 have_bundle() {
-  local file
+  local file runtime_qairt bundle_qairt
 
   [[ -d "$BUNDLE_DIR" ]] || return 1
   for file in token_emb.bin backbone.bin vision_encoder.bin action_expert.bin metadata.json; do
     [[ -s "$BUNDLE_DIR/$file" ]] || return 1
   done
+
+  runtime_qairt="$(installed_qairt_version)" || return 0
+  bundle_qairt="$(bundle_qairt_version)" || return 0
+  if ! qairt_runs_on "$bundle_qairt" "$runtime_qairt"; then
+    echo "bundle was built with QAIRT $bundle_qairt, newer than installed runtime $runtime_qairt"
+    return 1
+  fi
+}
+
+# Print "<ai-hub-models release> <qairt version>" for the newest Pi0.5 bundle that the
+# installed QAIRT runtime can load. Releases are walked newest first.
+select_bundle_release() {
+  local qai_hub_models="$1" runtime_qairt="$2" release sdk best
+
+  for release in $("$qai_hub_models" versions 2>/dev/null |
+      grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | sort -t. -k1,1nr -k2,2nr -k3,3nr | uniq); do
+    best=""
+    while read -r sdk; do
+      [[ -n "$sdk" ]] || continue
+      qairt_runs_on "$sdk" "$runtime_qairt" || continue
+      if [[ -z "$best" ]] || dpkg --compare-versions "$sdk" gt "$best"; then
+        best="$sdk"
+      fi
+    done < <("$qai_hub_models" fetch Pi0.5 --info --version "$release" "${BUNDLE_FETCH_ARGS[@]}" 2>/dev/null |
+      grep -oE 'QAIRT [0-9][0-9.]*' | awk '{print $2}')
+    if [[ -n "$best" ]]; then
+      echo "$release $best"
+      return 0
+    fi
+    echo "  ai-hub-models $release: no Pi0.5 bundle runnable on QAIRT $runtime_qairt" >&2
+  done
+  return 1
 }
 
 fetch_bundle() {
   local qai_hub_models="$TOOLS_VENV/bin/qai-hub-models"
+  local runtime_qairt release_args=() selection release sdk
 
   if [[ ! -x "$qai_hub_models" ]]; then
     echo "ERROR: qai-hub-models is missing from $TOOLS_VENV" >&2
     exit 1
   fi
 
+  if runtime_qairt="$(installed_qairt_version)"; then
+    echo "installed QAIRT runtime: $runtime_qairt; selecting a compatible Pi0.5 bundle"
+    if ! selection="$(select_bundle_release "$qai_hub_models" "$runtime_qairt")"; then
+      cat >&2 <<EOF
+ERROR: no AI Hub Models release has a Pi0.5 bundle that runs on QAIRT $runtime_qairt.
+Upgrade qairt-libs, or copy a compatible bundle to:
+  $BUNDLE_DIR
+EOF
+      exit 1
+    fi
+    read -r release sdk <<<"$selection"
+    echo "using ai-hub-models $release (bundle built with QAIRT $sdk)"
+    release_args=(--version "$release" --sdk-version "qairt=$sdk")
+  else
+    echo "WARNING: qairt-libs version unknown; fetching the latest Pi0.5 bundle" >&2
+  fi
+
   rm -rf "$BUNDLE_DIR"
   if ! (cd "$ROOT/artifacts" && "$qai_hub_models" fetch Pi0.5 \
-      --runtime qnn_context_binary \
-      --precision mixed \
-      --chipset qualcomm-qcs9075); then
+      "${BUNDLE_FETCH_ARGS[@]}" "${release_args[@]}"); then
     cat >&2 <<EOF
 ERROR: Pi0.5 bundle fetch failed.
 Authenticate Qualcomm AI Hub on this board, or copy the bundle to:

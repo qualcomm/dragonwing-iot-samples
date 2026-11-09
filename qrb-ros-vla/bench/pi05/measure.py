@@ -34,7 +34,7 @@ import sys
 import time
 from pathlib import Path
 
-ART = Path("/home/ubuntu/QRB-ROS-VLA/artifacts/pi05-qnn_context_binary-mixed-qualcomm_qcs9075")
+ART = Path("/home/ubuntu/dragonwing-iot-samples/qrb-ros-vla/artifacts/pi05-qnn_context_binary-mixed-qualcomm_qcs9075")
 HERE = Path(__file__).resolve().parent
 WORK = Path("/tmp/pi05_bench")
 BACKEND = "/usr/lib/libQnnHtp.so"

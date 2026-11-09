@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -uo pipefail
 export LD_LIBRARY_PATH=/usr/lib ADSP_LIBRARY_PATH=/usr/lib/dsp/cdsp
-ART=/home/ubuntu/QRB-ROS-VLA/artifacts/pi05-qnn_context_binary-mixed-qualcomm_qcs9075
-cd /home/ubuntu/QRB-ROS-VLA/bench/pi05
+ART=/home/ubuntu/dragonwing-iot-samples/qrb-ros-vla/artifacts/pi05-qnn_context_binary-mixed-qualcomm_qcs9075
+cd /home/ubuntu/dragonwing-iot-samples/qrb-ros-vla/bench/pi05
 run() { # tag graph n perf extra...
   local tag=$1 g=$2 n=$3 pp=$4; shift 4
   local o=/tmp/sw_${tag}; rm -rf "$o"

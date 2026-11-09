@@ -16,7 +16,7 @@ Every number here was measured on this board. Talk narrative and slide-level fra
 All five must pass. Run from the repository root:
 
 ```bash
-cd /home/ubuntu/QRB-ROS-VLA
+cd /home/ubuntu/dragonwing-iot-samples/qrb-ros-vla
 ls /dev/fastrpc-cdsp /dev/dma_heap/system
 cat /sys/class/remoteproc/remoteproc*/state | sort -u
 du -sh artifacts/pi05-qnn_context_binary-mixed-qualcomm_qcs9075
@@ -58,7 +58,7 @@ Cold start to first arm motion is about 90 s. Do not discover that live.
 ## 2. Launch (~80 s before you speak)
 
 ```bash
-cd /home/ubuntu/QRB-ROS-VLA && scripts/start-libero-web-demo.sh
+cd /home/ubuntu/dragonwing-iot-samples/qrb-ros-vla && scripts/start-libero-web-demo.sh
 ```
 
 This opens a tmux session with two panes. **Wait for both readiness markers** — starting early looks

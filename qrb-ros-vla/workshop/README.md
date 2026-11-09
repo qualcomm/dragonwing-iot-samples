@@ -42,7 +42,7 @@ Set up your terminal once:
 
 ```
 DEVICE
-cd ~/QRB-ROS-VLA
+cd ~/dragonwing-iot-samples/qrb-ros-vla
 source /opt/ros/jazzy/setup.bash
 source ros2_ws/install/setup.bash
 ```
@@ -101,7 +101,7 @@ It is now waiting for camera images. Give it some. **Terminal B:**
 
 ```
 DEVICE
-cd ~/QRB-ROS-VLA
+cd ~/dragonwing-iot-samples/qrb-ros-vla
 source /opt/ros/jazzy/setup.bash && source ros2_ws/install/setup.bash
 python3 demo/synthetic_publisher.py --rate 1.0
 ```
@@ -125,7 +125,7 @@ no CPU fallback here.
 
 ```
 DEVICE
-cd ~/QRB-ROS-VLA && ./workshop/scripts/check.sh 1
+cd ~/dragonwing-iot-samples/qrb-ros-vla && ./workshop/scripts/check.sh 1
 ```
 
 ```

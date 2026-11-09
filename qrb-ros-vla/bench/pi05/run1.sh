@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -uo pipefail
 export LD_LIBRARY_PATH=/usr/lib ADSP_LIBRARY_PATH=/usr/lib/dsp/cdsp
-ART=/home/ubuntu/QRB-ROS-VLA/artifacts/pi05-qnn_context_binary-mixed-qualcomm_qcs9075
+ART=/home/ubuntu/dragonwing-iot-samples/qrb-ros-vla/artifacts/pi05-qnn_context_binary-mixed-qualcomm_qcs9075
 G=$1; N=${2:-20}; PP=${3:-default}; shift 3 || true
 OUT=/tmp/out_${G}_${PP}; rm -rf "$OUT"
 /usr/bin/time -f "WALL %e s  MAXRSS %M KB" qnn-net-run \
