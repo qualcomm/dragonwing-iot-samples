@@ -12,6 +12,9 @@ ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 TOOLS_VENV="${TOOLS_VENV:-$ROOT/.venv-tools}"
 BUNDLE_NAME="pi05-qnn_context_binary-mixed-qualcomm_qcs9075"
 BUNDLE_DIR="${BUNDLE_DIR:-$ROOT/artifacts/$BUNDLE_NAME}"
+# QAIRT runtime from ppa:ubuntu-qcom-iot/qcom-ppa. Pinned so every board runs the same
+# runtime, and the Pi0.5 bundle selected below stays loadable on it.
+QAIRT_APT_VERSION="${QAIRT_APT_VERSION:-2.49.0-0ubuntu1~bpo24.04.2}"
 SETUP_ONLY=0
 
 usage() {
@@ -26,6 +29,9 @@ Then starts scripts/start-libero-web-demo.sh unless --setup-only is passed.
 Environment overrides:
   TOOLS_VENV   helper Python venv for qai-hub-models and parquet conversion
   BUNDLE_DIR   existing/final Pi0.5 QNN context bundle directory
+  QAIRT_APT_VERSION
+               qairt-* package version to install and hold
+               (default 2.49.0-0ubuntu1~bpo24.04.2)
 EOF
   exit "$code"
 }
@@ -73,6 +79,28 @@ qairt_runs_on() {
   dpkg --compare-versions "$(short_version "$1")" le "$2"
 }
 
+MANIFEST="$ROOT/artifacts/manifest.sha256"
+
+# The manifest is written right after a pinned fetch, so it records exactly which bundle
+# was selected for this board. On later runs, check the bundle against it rather than
+# re-hashing whatever is on disk: rewriting it every time would bless a truncated or
+# swapped bundle. No manifest entries for the bundle (e.g. first run, or a bundle copied
+# in by hand) means there is nothing to compare against, which counts as a pass.
+bundle_matches_manifest() {
+  local entries bad
+
+  [[ -f "$MANIFEST" ]] || return 0
+  entries="$(grep -F "  $BUNDLE_NAME/" "$MANIFEST" || true)"
+  [[ -n "$entries" ]] || return 0
+
+  if bad="$(cd "$ROOT/artifacts" && sha256sum -c --quiet <<<"$entries" 2>&1)"; then
+    return 0
+  fi
+  echo "bundle does not match $MANIFEST:"
+  sed 's/^/  /' <<<"$bad"
+  return 1
+}
+
 have_bundle() {
   local file runtime_qairt bundle_qairt
 
@@ -80,6 +108,8 @@ have_bundle() {
   for file in token_emb.bin backbone.bin vision_encoder.bin action_expert.bin metadata.json; do
     [[ -s "$BUNDLE_DIR/$file" ]] || return 1
   done
+
+  bundle_matches_manifest || return 1
 
   runtime_qairt="$(installed_qairt_version)" || return 0
   bundle_qairt="$(bundle_qairt_version)" || return 0
@@ -153,20 +183,33 @@ EOF
   fi
 }
 
+# Rewrite the manifest. Bundle entries are carried over from the existing manifest when
+# present (have_bundle has already verified them); they are only re-hashed after a fresh
+# fetch or when no record exists. The tokenizer is pinned by fetch-tokenizer.sh and the
+# episode is regenerated each run, so those two are always re-hashed.
 write_artifact_manifest() {
-  local manifest="$ROOT/artifacts/manifest.sha256"
+  local fresh_bundle="$1" bundle_entries="" tmp="$MANIFEST.tmp"
+
+  if [[ "$fresh_bundle" -eq 0 && -f "$MANIFEST" ]]; then
+    bundle_entries="$(grep -F "  $BUNDLE_NAME/" "$MANIFEST" || true)"
+  fi
   (
     cd "$ROOT/artifacts"
-    sha256sum \
-      paligemma_tokenizer.model \
-      "$BUNDLE_NAME/action_expert.bin" \
-      "$BUNDLE_NAME/backbone.bin" \
-      "$BUNDLE_NAME/token_emb.bin" \
-      "$BUNDLE_NAME/vision_encoder.bin" \
-      "$BUNDLE_NAME/metadata.json" \
-      libero_ep0.npz > "$manifest"
-  )
-  echo "wrote artifact manifest: $manifest"
+    sha256sum paligemma_tokenizer.model
+    if [[ -n "$bundle_entries" ]]; then
+      printf '%s\n' "$bundle_entries"
+    else
+      sha256sum \
+        "$BUNDLE_NAME/action_expert.bin" \
+        "$BUNDLE_NAME/backbone.bin" \
+        "$BUNDLE_NAME/token_emb.bin" \
+        "$BUNDLE_NAME/vision_encoder.bin" \
+        "$BUNDLE_NAME/metadata.json"
+    fi
+    sha256sum libero_ep0.npz
+  ) > "$tmp"
+  mv "$tmp" "$MANIFEST"
+  echo "wrote artifact manifest: $MANIFEST"
 }
 
 
@@ -181,8 +224,26 @@ step "QRB ROS packages"
 
 step "System packages"
 $APT_GET install \
-  curl git tmux python3-venv python3-pip python3-numpy python3-pil \
-  qairt-libs qairt-tools qairt-headers libsentencepiece-dev
+  curl git tmux python3-venv python3-pip python3-numpy python3-pil libsentencepiece-dev
+
+step "QAIRT $QAIRT_APT_VERSION (pinned)"
+# All four packages are pinned explicitly: qairt-tools depends on qairt-libs without a
+# version, so pinning qairt-libs alone would not stop the tools drifting. The hold keeps a
+# later `apt upgrade` from moving the runtime under the bundle that was chosen for it.
+QAIRT_PKGS=(qairt-libs qairt-tools qairt-headers qairt-dsp-binaries)
+if ! $APT_GET install --allow-downgrades --allow-change-held-packages \
+    "${QAIRT_PKGS[@]/%/=$QAIRT_APT_VERSION}"; then
+  cat >&2 <<EOF
+ERROR: could not install QAIRT $QAIRT_APT_VERSION from the PPA.
+Launchpad PPAs usually publish only the newest build, so this version may have been
+superseded. Versions currently available:
+$(apt-cache madison qairt-libs 2>/dev/null | sed 's/^/  /')
+Set QAIRT_APT_VERSION to one of them (the Pi0.5 bundle is selected to match it), e.g.
+  QAIRT_APT_VERSION=<version> scripts/iq9-one-shot-demo.sh
+EOF
+  exit 1
+fi
+sudo apt-mark hold "${QAIRT_PKGS[@]}" >/dev/null
 
 step "Python helper tools"
 if [[ ! -x "$TOOLS_VENV/bin/python" ]]; then
@@ -197,11 +258,16 @@ step "Tokenizer"
 "$ROOT/scripts/fetch-tokenizer.sh" "$ROOT/artifacts/paligemma_tokenizer.model"
 
 step "Pi0.5 QNN context bundle"
+FRESH_BUNDLE=0
 if have_bundle; then
-  echo "already present and complete: $BUNDLE_DIR"
+  echo "already present and verified: $BUNDLE_DIR"
 else
-  echo "missing or incomplete bundle: $BUNDLE_DIR"
+  echo "missing, incomplete, or unverified bundle: $BUNDLE_DIR"
   fetch_bundle
+  FRESH_BUNDLE=1
+  # The old manifest describes the bundle that was just replaced; drop its entries
+  # so the re-check below only looks at presence and QAIRT compatibility.
+  rm -f "$MANIFEST"
   have_bundle || { echo "ERROR: fetched Pi0.5 bundle is incomplete: $BUNDLE_DIR" >&2; exit 1; }
 fi
 
@@ -209,7 +275,7 @@ step "LIBERO replay episode"
 PYTHON="$TOOLS_VENV/bin/python" "$ROOT/scripts/fetch-libero-episode.sh" /tmp/libero
 
 step "Artifact manifest"
-write_artifact_manifest
+write_artifact_manifest "$FRESH_BUNDLE"
 
 step "ROS workspace build"
 # shellcheck disable=SC1091

@@ -95,8 +95,15 @@ DEVICE
 cd ~/dragonwing-iot-samples/qrb-ros-vla
 ./scripts/install-ros2-jazzy.sh
 ./scripts/install-qrb-ros.sh
-sudo apt-get install -y qairt-libs qairt-tools qairt-headers libsentencepiece-dev python3-pil
+sudo apt-get install -y libsentencepiece-dev python3-pil
+QAIRT=2.49.0-0ubuntu1~bpo24.04.2
+sudo apt-get install -y --allow-downgrades --allow-change-held-packages \
+  qairt-libs=$QAIRT qairt-tools=$QAIRT qairt-headers=$QAIRT qairt-dsp-binaries=$QAIRT
+sudo apt-mark hold qairt-libs qairt-tools qairt-headers qairt-dsp-binaries
 ```
+
+QAIRT is pinned so every board in the room runs the same runtime, and the Pi0.5 bundle fetched in
+step 4 can load on it. Do not `apt upgrade` the `qairt-*` packages afterwards.
 
 **Expected output** at the end of the first script:
 
